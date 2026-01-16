@@ -1,1 +1,29 @@
-a
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Inventory | Hassan Electric</title>
+</head>
+<body class="sub-page">
+    <div class="header-sub">
+        <div class="container flex-sub">
+            <a href="../index.html">← BACK HOME</a>
+            <h2>LIVE_INVENTORY_VAULT</h2>
+        </div>
+    </div>
+    <div class="container section">
+        <input type="text" id="search" placeholder="SEARCH HARDWARE..." class="search-input">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>ITEM</th><th>CATEGORY</th><th>LIST</th><th>OFF</th><th>NET</th><th>ORDER</th></tr>
+                </thead>
+                <tbody id="inventory-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>
