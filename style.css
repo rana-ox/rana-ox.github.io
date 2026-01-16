@@ -1,15 +1,20 @@
-/* ===============================
-   ROOT THEME
-=============================== */
+/* ==================================================
+   ROOT THEME VARIABLES
+================================================== */
 :root {
   --bg: #050810;
   --panel: #0b1020;
+  --panel-soft: rgba(255,255,255,0.04);
   --gold: #fcc419;
   --text: #eaeaf0;
   --muted: #9aa0b4;
   --border: rgba(255,255,255,0.08);
+  --blur: blur(14px);
 }
 
+/* ==================================================
+   RESET & BASE
+================================================== */
 * {
   box-sizing: border-box;
 }
@@ -22,9 +27,35 @@ body {
   line-height: 1.6;
 }
 
-/* ===============================
-   GRID OVERLAY
-=============================== */
+h1,h2,h3 {
+  margin-top: 0;
+  letter-spacing: 0.3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section {
+  padding: 4rem 6%;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ==================================================
+   GRID OVERLAY BACKGROUND
+================================================== */
 .grid-overlay {
   position: fixed;
   inset: 0;
@@ -36,16 +67,16 @@ body {
   z-index: 0;
 }
 
-/* ===============================
-   LOADER
-=============================== */
+/* ==================================================
+   ISLAMIC LOADER
+================================================== */
 #loader {
   position: fixed;
   inset: 0;
   background: #000;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 9999;
 }
 
@@ -59,25 +90,24 @@ body {
 }
 
 .progress-bar {
-  width: 280px;
+  width: 300px;
   height: 6px;
   background: #222;
-  margin: 1.5rem auto 0;
   border-radius: 6px;
   overflow: hidden;
+  margin: 1.5rem auto 0;
 }
 
 #progress {
-  display: block;
   height: 100%;
   width: 0%;
   background: var(--gold);
   transition: width 0.4s ease;
 }
 
-/* ===============================
+/* ==================================================
    NAVBAR
-=============================== */
+================================================== */
 .navbar {
   position: sticky;
   top: 0;
@@ -86,93 +116,135 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 6%;
-  backdrop-filter: blur(12px);
+  backdrop-filter: var(--blur);
   background: rgba(5,8,16,0.75);
   border-bottom: 1px solid var(--border);
 }
 
 .logo {
-  height: 40px;
+  height: 42px;
 }
 
 .navbar nav a {
-  color: var(--muted);
   margin-left: 1.5rem;
-  text-decoration: none;
   font-weight: 600;
+  color: var(--muted);
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.navbar nav a.active,
-.navbar nav a:hover {
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
   color: var(--gold);
 }
 
-/* ===============================
-   SECTIONS
-=============================== */
-section {
-  padding: 4rem 6%;
-  position: relative;
-  z-index: 1;
+.navbar nav a:hover::after,
+.navbar nav a.active::after {
+  width: 100%;
 }
 
+/* ==================================================
+   HERO
+================================================== */
 .hero {
   text-align: center;
   padding-top: 6rem;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
   color: var(--gold);
 }
 
-.muted {
-  color: var(--muted);
+.hero p {
+  font-size: 1.05rem;
 }
 
-/* ===============================
+/* ==================================================
    CARDS & GRIDS
-=============================== */
+================================================== */
 .cap-grid,
-.quick-links {
+.quick-links,
+.stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1.6rem;
 }
 
 .cap-card,
 .quick-card,
-.stat {
+.stat,
+details {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.5rem;
+  border-radius: 16px;
+  padding: 1.6rem;
+  transition: all 0.3s ease;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
-  gap: 1.5rem;
+/* Hover Lift */
+.cap-card:hover,
+.quick-card:hover,
+.stat:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  box-shadow: 0 14px 40px rgba(252,196,25,0.18);
+}
+
+/* ==================================================
+   STATS
+================================================== */
+.stat {
   text-align: center;
 }
 
 .stat h3 {
+  font-size: 2.1rem;
   color: var(--gold);
-  font-size: 2rem;
 }
 
-/* ===============================
+/* ==================================================
+   WHY US LIST
+================================================== */
+.why-us ul {
+  list-style: none;
+  padding: 0;
+}
+
+.why-us li {
+  margin-bottom: 0.7rem;
+}
+
+/* ==================================================
    CALCULATOR
-=============================== */
+================================================== */
+.calculator {
+  max-width: 420px;
+  margin: auto;
+  text-align: center;
+}
+
 .calculator input,
 .calculator button {
   width: 100%;
   padding: 0.9rem;
   margin-top: 0.7rem;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--panel);
   color: var(--text);
+  font-size: 1rem;
 }
 
 .calculator button {
@@ -182,26 +254,63 @@ section {
   cursor: pointer;
 }
 
+.calculator button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(252,196,25,0.35);
+}
+
 #result {
   margin-top: 1rem;
   color: var(--gold);
+  font-weight: 600;
 }
 
-/* ===============================
+/* ==================================================
    FAQ
-=============================== */
-details {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+================================================== */
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gold);
 }
 
-/* ===============================
+details[open] {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(252,196,25,0.15);
+}
+
+/* ==================================================
+   QUICK LINKS
+================================================== */
+.quick-card {
+  cursor: pointer;
+}
+
+.quick-card span {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ==================================================
    MAP
-=============================== */
+================================================== */
 .map iframe {
-  border-radius: 14px;
+  width: 100%;
+  height: 320px;
+  border: none;
+  border-radius: 16px;
   margin-top: 1.5rem;
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 5%;
+  }
+
+  .navbar nav a {
+    margin-left: 1rem;
+  }
 }
