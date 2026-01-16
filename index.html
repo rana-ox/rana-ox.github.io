@@ -1,77 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hassan Electric | Solar & HVAC Engineering Rawalpindi</title>
-    <meta name="description" content="Authorized Industrial Solar & HVAC Contractors in Bahria, Rawalpindi & Islamabad. Expert Hybrid Solar & VRF Systems.">
-    <link rel="icon" href="assets/logo.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Electrician",
-      "name": "Hassan Electric & Cool Services",
-      "areaServed": ["Bahria Phase 7", "Rawalpindi", "Islamabad"],
-      "address": { "@type": "PostalAddress", "addressLocality": "Rawalpindi", "addressCountry": "PK" }
-    }
-    </script>
+  <meta charset="UTF-8" />
+  <title>Hassan Electric & Cool Services | Power Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="Industrial Solar, HVAC & Electrical Engineering Services in Rawalpindi & Islamabad." />
+  <meta property="og:title" content="Hassan Electric & Cool Services" />
+  <meta property="og:description" content="Industrial Solar, HVAC & Electrical Engineering Solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="assets/logo.ico">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div id="loader">
-        <div class="loader-inner">
-            <h1 class="urdu">اَلسَّلَامُ عَلَيْكُمْ</h1>
-            <p class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-            <div class="bar-bg"><div id="bar-fill"></div></div>
-            <p class="status">SYNCING WITH HASSAN_SERVER_01...</p>
-        </div>
+<!-- Islamic Loader -->
+<div id="loader">
+  <div class="loader-content">
+    <h1 class="urdu">Assalam-o-Alaikum</h1>
+    <p class="urdu">بِسْمِ ٱللَّٰهِ</p>
+    <div class="progress-bar">
+      <span id="progress"></span>
     </div>
+  </div>
+</div>
 
-    <header class="navbar">
-        <div class="container nav-flex">
-            <a href="index.html" class="logo">
-                <img src="assets/logo.ico" alt="Hassan Electric">
-                <div class="logo-text">
-                    <span class="brand-h">HASSAN <span class="gold">ELECTRIC</span></span>
-                    <span class="brand-s">ENGINEERING & COOL SERVICES</span>
-                </div>
-            </a>
-            <nav class="links">
-                <a href="index.html" class="active">HOME</a>
-                <a href="data/services.html">SERVICES</a>
-                <a href="data/inventory.html">INVENTORY</a>
-                <a href="about.html">TEAM</a>
-                <a href="https://wa.me/923025070541" class="btn-wa">WHATSAPP</a>
-            </nav>
-        </div>
-    </header>
+<header class="navbar">
+  <img src="assets/logo.png" alt="Hassan Electric" class="logo">
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="data/inventory.html">Inventory</a>
+    <a href="data/services.html">Services</a>
+  </nav>
+</header>
 
-    <section class="hero">
-        <div class="hero-glow"></div>
-        <div class="container">
-            <h1 class="reveal">SMART ENERGY <br><span class="outline">REDESIGNED</span></h1>
-            <p class="reveal delay">Industrial-grade Solar & HVAC infrastructure for Bahria, Rawalpindi & Islamabad.</p>
-        </div>
-    </section>
+<section class="hero">
+  <h2>Power Intelligence</h2>
+  <p>Industrial Solar · HVAC · Electrical Engineering</p>
+</section>
 
-    <section class="calculator-section">
-        <div class="container">
-            <div class="calc-card">
-                <h3><i class="fa-solid fa-calculator gold"></i> Quick Solar Estimator</h3>
-                <p>Enter your monthly bill to see required Solar Capacity.</p>
-                <div class="calc-input">
-                    <input type="number" id="billInput" placeholder="Monthly Bill (PKR)">
-                    <button onclick="estimateSolar()">Calculate</button>
-                </div>
-                <div id="calcResult" class="calc-result"></div>
-            </div>
-        </div>
-    </section>
+<section class="calculator">
+  <h3>Unit-Based Solar Calculator</h3>
+  <input type="number" id="units" placeholder="Monthly Units (kWh)">
+  <button onclick="calculateSolar()">Calculate</button>
 
-    <script src="script.js"></script>
+  <div id="result"></div>
+</section>
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Hassan Electric & Cool Services",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rawalpindi",
+    "addressRegion": "Punjab",
+    "addressCountry": "PK"
+  },
+  "areaServed": ["Rawalpindi", "Islamabad"],
+  "telephone": "+92-302-5070541"
+}
+</script>
+
+<script src="script.js"></script>
 </body>
 </html>
