@@ -3,87 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HASSAN ELECTRIC | INDUSTRIAL PORTAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Space+Grotesk:wght@300;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    
+    <title>Hassan Electric & Cool Services | Solar & HVAC Experts Rawalpindi</title>
+    <meta name="description" content="Official portal of Hassan Electric & Cool Services. Specialists in Industrial Solar Systems, HVAC, and Electrical Engineering in Bahria Phase 7, Rawalpindi.">
+    <meta name="keywords" content="Hassan Electric, Solar Panels Rawalpindi, HVAC Services Bahria Phase 7, Electrical Engineer Islamabad, Hybrid Solar System Pakistan">
+    <meta name="author" content="Hassan Electric">
+    <link rel="canonical" href="https://www.hassanelectric.live/">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
     <div id="boot-screen" class="boot-wrapper">
         <div class="boot-content">
-            <h1 class="urdu-greeting">Assalam-o-Alaikum</h1>
-            <p class="urdu-text">اَلسَّلَامُ عَلَيْكُمْ</p>
-            <div class="loader-container">
-                <div id="loader-bar" class="loader-progress"></div>
-            </div>
-            <div class="status-logs" id="status-logs">
-                > INITIALIZING BI-MILLAH...<br>
-                > SYNCING CALIBRATION...
-            </div>
+            <h1 class="urdu-greeting">اَلسَّلَامُ عَلَيْكُمْ</h1>
+            <div class="loader-container"><div id="loader-bar" class="loader-progress"></div></div>
+            <div id="status-logs" class="status-logs">> BISMILLAH_INIT...</div>
         </div>
     </div>
 
     <header class="top-bar">
         <div class="logo-section">
-            <i class="fa-solid fa-bolt-lightning neon-flicker"></i>
-            <span class="brand-name">HASSAN  <span class="gold">  ELECRIC</span></span>
+            <div class="main-logo">
+                <i class="fa-solid fa-bolt-lightning neon-flicker"></i>
+                <div class="logo-text">
+                    <span class="brand-name">HASSAN<span class="gold">ELECTRIC</span></span>
+                    <span class="tagline">ENGINEERING SOLUTIONS</span>
+                </div>
+            </div>
         </div>
         <div class="header-right">
-            <span class="location-tag">RAWALPINDI // 33.6844° N</span>
+            <div class="sys-status hide-mobile">
+                <span class="pulse"></span> LIVE_SYNC: ACTIVE
+            </div>
             <div class="clock" id="clock">00:00:00</div>
+            <button id="mobile-toggle" class="mobile-toggle"><i class="fa-solid fa-bars-staggered"></i></button>
         </div>
     </header>
 
     <div class="app-container">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <nav>
-                <button class="nav-btn active" data-tab="services">01_SERVICES</button>
-                <button class="nav-btn" data-tab="catalog">02_CATALOG</button>
-                <button class="nav-btn" data-tab="projects">03_PROJECTS</button>
-                <button class="nav-btn" data-tab="contact">04_SUPPORT</button>
+                <button class="nav-btn active" data-tab="services">
+                    <i class="fa-solid fa-microchip"></i> <span>01_SERVICES</span>
+                </button>
+                <button class="nav-btn" data-tab="catalog">
+                    <i class="fa-solid fa-layer-group"></i> <span>02_CATALOG</span>
+                </button>
+                <button class="nav-btn" data-tab="sync-engine">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> <span>03_LIVE_SYNC</span>
+                </button>
+                <button class="nav-btn" data-tab="contact">
+                    <i class="fa-solid fa-map-location-dot"></i> <span>04_SUPPORT</span>
+                </button>
             </nav>
         </aside>
 
         <main class="content-area">
+            
             <section id="services" class="tab-view active">
                 <div class="hero-header">
                     <h2>POWERING <span class="outline">INFRASTRUCTURE</span></h2>
+                    <p>Industrial grade electrical and cooling systems.</p>
                 </div>
                 <div class="industrial-grid" id="service-injection"></div>
             </section>
 
             <section id="catalog" class="tab-view">
                 <div class="hero-header">
-                    <h2>HARDWARE <span class="outline">INVENTORY</span></h2>
+                    <h2>STATIC <span class="outline">INVENTORY</span></h2>
                 </div>
-                <div class="filter-strip">
-                    <button class="f-pill active" onclick="filterData('All')">ALL.UNITS</button>
-                    <button class="f-pill" onclick="filterData('Solar')">SOLAR.UNIT</button>
-                    <button class="f-pill" onclick="filterData('HVAC')">HVAC.UNIT</button>
-                </div>
-                <div class="industrial-grid" id="product-injection"></div>
+                <div class="industrial-grid" id="static-inventory-injection"></div>
             </section>
 
-            <section id="projects" class="tab-view">
-                <div class="hero-header">
-                    <h2>OPERATIONAL <span class="outline">LOGS</span></h2>
+            <section id="sync-engine" class="tab-view">
+                <div class="sync-banner">
+                    <div class="sync-text">
+                        <h2 class="title-xl">CLOUD <span class="outline">SYNC</span></h2>
+                        <p>Real-time hardware rates fetched from central database.</p>
+                    </div>
+                    <button id="sync-trigger" class="sync-btn">
+                        <i class="fa-solid fa-rotate"></i> REFRESH_RATES
+                    </button>
                 </div>
-                <div class="log-list" id="log-injection"></div>
+                <div id="sync-notice" class="sync-status-bar">AWAITING_COMMAND...</div>
+                <div class="industrial-grid" id="auto-sync-injection">
+                    </div>
             </section>
 
             <section id="contact" class="tab-view">
                 <div class="contact-blueprint">
                     <div class="blueprint-info">
-                        <h3>HQ COORDINATES</h3>
-                        <p>BAHRIA PHASE 7, SHOP 5</p>
-                        <p>COMMERCIAL ZONE</p>
-                        <div class="wa-box">
-                            <a href="https://wa.me/923025070541" class="wa-btn">ESTABLISH CONNECTION</a>
+                        <h3>HQ_COORDINATES</h3>
+                        <div class="info-row">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>Shop #5, Mini Commercial, Bahria Phase 7, Rawalpindi</p>
                         </div>
+                        <div class="info-row">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <p>+92 302 5070541</p>
+                        </div>
+                        <a href="https://wa.me/923025070541?text=Requesting%20Engineering%20Support" class="wa-btn">
+                            <i class="fa-brands fa-whatsapp"></i> ESTABLISH CONNECTION
+                        </a>
                     </div>
                     <div class="blueprint-map">
-                        <iframe src="http://googleusercontent.com/maps.google.com/5" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.241565137021!2d73.0903328!3d33.5211516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df920f3a61c77f%3A0xc682944b94f9b8c!2sBahria%20Phase%207!5e0!3m2!1sen!2spk!4v1700000000000" loading="lazy"></iframe>
                     </div>
                 </div>
             </section>
@@ -96,7 +126,6 @@
         </div>
     </footer>
 
-    <script src="inventory.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
