@@ -1,113 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Inventory | Hassan Electric</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>Services | Hassan Electric & Cool Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Industrial solar, HVAC & electrical engineering services.">
 
-  <link rel="stylesheet" href="../style.css" />
-
-  <style>
-    .inventory-wrap {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      padding: 40px 6%;
-    }
-
-    .item-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      transition: transform .3s;
-    }
-
-    .item-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--primary);
-    }
-
-    .item-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    .price {
-      color: var(--primary);
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .item-card a {
-      display: inline-block;
-      margin-top: 12px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .error {
-      text-align: center;
-      color: red;
-      padding: 40px;
-    }
-  </style>
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
 <header class="navbar">
+  <img src="../assets/logo.png" class="logo" alt="Hassan Electric">
   <nav>
-    <a href="../index.html">← Back Home</a>
+    <a href="../index.html">Home</a>
+    <a href="inventory.html">Inventory</a>
   </nav>
 </header>
 
-<h2 style="text-align:center; margin-top:40px">Live Inventory</h2>
+<section class="page-hero">
+  <h1>🛠 Engineering Services</h1>
+  <p>Industrial · Commercial · Residential</p>
+</section>
 
-<div id="inventory" class="inventory-wrap"></div>
+<section class="services-grid" id="services">
+  <!-- Cards injected by script.js -->
+</section>
 
-<div id="error" class="error"></div>
-
-<script>
-/* ===============================
-   CSV LINK (CONFIRMED)
-=============================== */
-const INVENTORY_CSV =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=0&single=true&output=csv";
-
-/* ===============================
-   SAFE CSV PARSER
-=============================== */
-function parseCSV(text) {
-  const rows = [];
-  let current = [];
-  let insideQuotes = false;
-  let value = "";
-
-  for (let char of text) {
-    if (char === '"') {
-      insideQuotes = !insideQuotes;
-    } else if (char === "," && !insideQuotes) {
-      current.push(value.trim());
-      value = "";
-    } else if (char === "\n" && !insideQuotes) {
-      current.push(value.trim());
-      rows.push(current);
-      current = [];
-      value = "";
-    } else {
-      value += char;
-    }
-  }
-  current.push(value.trim());
-  rows.push(current);
-
-  return rows.slice(1
+<script src="../script.js"></script>
+</body>
+</html>
