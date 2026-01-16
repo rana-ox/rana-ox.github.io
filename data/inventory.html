@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style.css">
-    <title>Hardware Vault | Hassan Electric</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Inventory | Hassan Electric</title>
 </head>
 <body class="sub-page">
-    <div class="sub-header">
-        <a href="../index.html" class="back-link">← BACK TO HQ</a>
-        <h2>LIVE_INVENTORY_FEED</h2>
-    </div>
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" id="inventorySearch" placeholder="FILTER BY UNIT TYPE...">
+    <div class="header-sub">
+        <div class="container flex-sub">
+            <a href="../index.html">← BACK HOME</a>
+            <h2>LIVE_INVENTORY_VAULT</h2>
         </div>
-        <div class="table-frame">
-            <table class="industrial-table">
+    </div>
+    <div class="container section">
+        <input type="text" id="search" placeholder="SEARCH HARDWARE..." class="search-input">
+        <div class="table-wrap">
+            <table>
                 <thead>
-                    <tr><th>PRODUCT</th><th>SPEC</th><th>LIST_PRICE</th><th>DISCOUNT</th><th>NET_VALUE</th><th>ACTION</th></tr>
+                    <tr><th>ITEM</th><th>CATEGORY</th><th>LIST</th><th>OFF</th><th>NET</th><th>ORDER</th></tr>
                 </thead>
                 <tbody id="inventory-body"></tbody>
             </table>
