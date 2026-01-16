@@ -3,108 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hassan Electric & Cool Services | Engineering Firm</title>
-    
-    <meta name="description" content="International-standard Solar, HVAC, and Electrical Engineering solutions. Bahria Phase 7, Rawalpindi.">
-    <link rel="canonical" href="https://www.hassanelectric.live/">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <title>HASSAN ELECTRIC | INDUSTRIAL PORTAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Space+Grotesk:wght@300;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="loader" class="loader-wrapper">
-        <div class="loader-bolt"><i class="fa-solid fa-bolt-lightning"></i></div>
-        <p>Initializing Systems...</p>
+    <div id="boot-screen" class="boot-wrapper">
+        <div class="boot-content">
+            <h1 class="urdu-greeting">Assalam-o-Alaikum</h1>
+            <p class="urdu-text">اَلسَّلَامُ عَلَيْكُمْ</p>
+            <div class="loader-container">
+                <div id="loader-bar" class="loader-progress"></div>
+            </div>
+            <div class="status-logs" id="status-logs">
+                > INITIALIZING BI-MILLAH...<br>
+                > SYNCING CALIBRATION...
+            </div>
+        </div>
     </div>
 
-    <header>
-        <div class="nav-container">
-            <div class="brand">
-                <i class="fa-solid fa-bolt-lightning"></i>
-                <div class="brand-text">
-                    <span class="main-name">HASSAN ELECTRIC</span>
-                    <span class="sub-name">& COOL SERVICES</span>
-                </div>
-            </div>
-            <div class="header-contact">
-                <a href="https://wa.me/923025070541" class="neon-wa-btn">
-                    <i class="fa-brands fa-whatsapp"></i> <span>LIVE SUPPORT</span>
-                </a>
-            </div>
+    <header class="top-bar">
+        <div class="logo-section">
+            <i class="fa-solid fa-bolt-lightning neon-flicker"></i>
+            <span class="brand-name">HASSAN<span class="gold">.ENG</span></span>
+        </div>
+        <div class="header-right">
+            <span class="location-tag">RAWALPINDI // 33.6844° N</span>
+            <div class="clock" id="clock">00:00:00</div>
         </div>
     </header>
 
-    <main>
-        <div class="dashboard-nav">
-            <nav class="tab-nav">
-                <button class="tab-btn active" data-tab="services">SYSTEMS & SERVICES</button>
-                <button class="tab-btn" data-tab="store">EQUIPMENT STORE</button>
-                <button class="tab-btn" data-tab="projects">ENGINEERING LOGS</button>
-                <button class="tab-btn" data-tab="contact">LOCATION</button>
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav>
+                <button class="nav-btn active" data-tab="services">01_SERVICES</button>
+                <button class="nav-btn" data-tab="catalog">02_CATALOG</button>
+                <button class="nav-btn" data-tab="projects">03_PROJECTS</button>
+                <button class="nav-btn" data-tab="contact">04_SUPPORT</button>
             </nav>
-        </div>
+        </aside>
 
-        <div class="container">
-            <section id="services" class="tab-content active">
-                <div class="dashboard-header">
-                    <h2>CORE ENGINEERING DIVISIONS</h2>
-                    <p>Standardized solutions for industrial and residential infrastructure.</p>
+        <main class="content-area">
+            <section id="services" class="tab-view active">
+                <div class="hero-header">
+                    <h2>POWERING <span class="outline">INFRASTRUCTURE</span></h2>
                 </div>
-                <div class="grid" id="services-grid"></div>
+                <div class="industrial-grid" id="service-injection"></div>
             </section>
 
-            <section id="store" class="tab-content">
-                <div class="dashboard-header">
-                    <h2>PRECISION EQUIPMENT</h2>
-                    <div class="filter-wrapper">
-                        <button class="filter-btn active" data-filter="All">ALL UNITS</button>
-                        <button class="filter-btn" data-filter="Solar">SOLAR</button>
-                        <button class="filter-btn" data-filter="Lighting">LIGHTING</button>
-                        <button class="filter-btn" data-filter="Electrical">ELECTRICAL</button>
+            <section id="catalog" class="tab-view">
+                <div class="hero-header">
+                    <h2>HARDWARE <span class="outline">INVENTORY</span></h2>
+                </div>
+                <div class="filter-strip">
+                    <button class="f-pill active" onclick="filterData('All')">ALL.UNITS</button>
+                    <button class="f-pill" onclick="filterData('Solar')">SOLAR.UNIT</button>
+                    <button class="f-pill" onclick="filterData('HVAC')">HVAC.UNIT</button>
+                </div>
+                <div class="industrial-grid" id="product-injection"></div>
+            </section>
+
+            <section id="projects" class="tab-view">
+                <div class="hero-header">
+                    <h2>OPERATIONAL <span class="outline">LOGS</span></h2>
+                </div>
+                <div class="log-list" id="log-injection"></div>
+            </section>
+
+            <section id="contact" class="tab-view">
+                <div class="contact-blueprint">
+                    <div class="blueprint-info">
+                        <h3>HQ COORDINATES</h3>
+                        <p>BAHRIA PHASE 7, SHOP 5</p>
+                        <p>COMMERCIAL ZONE</p>
+                        <div class="wa-box">
+                            <a href="https://wa.me/923025070541" class="wa-btn">ESTABLISH CONNECTION</a>
+                        </div>
                     </div>
-                </div>
-                <div class="grid" id="inventory-grid"></div>
-            </section>
-
-            <section id="projects" class="tab-content">
-                <div class="dashboard-header">
-                    <h2>PROJECT ARCHIVE</h2>
-                </div>
-                <div class="grid" id="projects-grid"></div>
-            </section>
-
-            <section id="contact" class="tab-content">
-                <div class="contact-grid">
-                    <div class="hq-card">
-                        <h3>OPERATIONS HEADQUARTERS</h3>
-                        <div class="info-row">
-                            <i class="fa-solid fa-location-crosshairs"></i>
-                            <p>Shop #5, Mini Commercial, Bahria Phase 7, Rawalpindi/Islamabad</p>
-                        </div>
-                        <div class="info-row">
-                            <i class="fa-solid fa-headset"></i>
-                            <p>+92 302 5070541</p>
-                        </div>
-                        <div class="info-row">
-                            <i class="fa-solid fa-microchip"></i>
-                            <p>Specialization: Hybrid Solar & Industrial HVAC</p>
-                        </div>
-                        <a href="https://wa.me/923025070541?text=Requesting%20Technical%20Survey" class="survey-btn">REQUEST SITE SURVEY</a>
-                    </div>
-                    <div class="map-box">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.234320857327!2d73.0903328!3d33.5213615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df949179d675b7%3A0x6b83f062c3e414c9!2sBahria%20Phase%207%2C%20Rawalpindi!5e0!3m2!1sen!2spk!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="blueprint-map">
+                        <iframe src="http://googleusercontent.com/maps.google.com/5" loading="lazy"></iframe>
                     </div>
                 </div>
             </section>
-        </div>
-    </main>
+        </main>
+    </div>
 
-    <footer>
-        <div class="footer-content">
-            <p>© <span id="year"></span> HASSAN ELECTRIC & COOL SERVICES | INDUSTRIAL DIVISION</p>
+    <footer class="system-footer">
+        <div class="scrolling-text">
+            SOLAR SOLUTIONS • INDUSTRIAL HVAC • SMART WIRING • PANEL DESIGN • NET METERING • 
         </div>
     </footer>
 
