@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             syncNotice.innerText = "SYNC_FAILED: CHECK_URL_OR_CONNECTION";
             // Fallback content if URL is not yet set
-            syncInjection.innerHTML = '<p style="padding:20px;">Please link your Google Sheet CSV URL in script.js to see live data.</p>';
+            syncInjection.innerHTML = '<p style="padding:20px;">We have update the rate list if you have any queries contact Sajjad Ahmed (Mithu).</p>';
         } finally {
             syncBtn.innerHTML = '<i class="fa-solid fa-rotate"></i> REFRESH_RATES';
         }
