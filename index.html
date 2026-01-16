@@ -1,698 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <!-- Branding -->
-  <title>Hassan Electric & Cool Services | Solar, HVAC & Electrical Experts</title>
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-
-  <!-- Meta Description -->
-  <meta name="description" content="Hassan Electric & Cool Services delivers international-standard solar solutions, HVAC repair, house wiring, and electrical maintenance in Rawalpindi/Islamabad. Trusted engineering firm with premium products and global-grade expertise." />
-
-  <!-- SEO Keywords -->
-  <meta name="keywords" content="Hassan Electric, Solar Solutions Pakistan, HVAC Repair Islamabad, Electrical Maintenance Rawalpindi, Power Inverters, LED Bulbs, Bahria Phase 7" />
-
-  <!-- Author -->
-  <meta name="author" content="Hassan Electric & Cool Services" />
-
-  <!-- Open Graph for Social Sharing -->
-  <meta property="og:title" content="Hassan Electric & Cool Services" />
-  <meta property="og:description" content="Global-standard solar, HVAC, and electrical services in Rawalpindi/Islamabad. Premium products and trusted expertise." />
-  <meta property="og:image" content="https://yourdomain.com/assets/logo.png" />
-  <meta property="og:url" content="https://yourdomain.com" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hassan Electric & Cool Services" />
-  <meta name="twitter:description" content="Solar, HVAC, and electrical services with premium products and trusted expertise." />
-  <meta name="twitter:image" content="https://yourdomain.com/assets/logo.png" />
-
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-</head>
-
-  <!-- Typography: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <!-- FontAwesome 6 -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <style>
-    :root{
-      --midnight:#020c1b;
-      --gold:#fcc419;
-      --slate:#6b7280;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --card-bg:rgba(2,12,27,0.6);
-      --glass-border:rgba(255,255,255,0.12);
-      --success:#22c55e;
-      --danger:#ef4444;
-      --accent:#38bdf8;
-      --shadow:0 10px 30px rgba(0,0,0,0.35);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
-      color:var(--text);
-      background:radial-gradient(1200px 600px at 10% 10%, #071427 0%, var(--midnight) 45%, #00060f 100%);
-    }
-
-    /* Global layout */
-    .container{max-width:1200px;margin:0 auto;padding:0 24px}
-    section{padding:80px 0}
-    h1,h2,h3{margin:0 0 16px}
-    p{color:#cbd5e1}
-
-    /* Top bar */
-    .topbar{
-      background:linear-gradient(90deg, rgba(2,12,27,0.95), rgba(2,12,27,0.75));
-      border-bottom:1px solid var(--glass-border);
-      position:sticky;top:0;z-index:1000;backdrop-filter:blur(10px)
-    }
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;height:72px
-    }
-    .brand{
-      display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0.5px
-    }
-    .brand i{color:var(--gold)}
-    .brand span{font-size:18px}
-    .nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0}
-    .nav a{
-      color:var(--text);text-decoration:none;font-weight:500;opacity:0.9
-    }
-    .nav a:hover{color:var(--gold)}
-    .cta-whatsapp{
-      display:flex;align-items:center;gap:10px;background:var(--gold);color:#0b1220;
-      padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none
-    }
-    .cta-whatsapp i{color:#0b1220}
-
-    /* Hero */
-    .hero{
-      position:relative;min-height:72vh;display:flex;align-items:center
-    }
-    .hero-grid{
-      display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px
-    }
-    .hero-card{
-      background:linear-gradient(180deg, rgba(2,12,27,0.65), rgba(2,12,27,0.35));
-      border:1px solid var(--glass-border);border-radius:16px;padding:32px;box-shadow:var(--shadow)
-    }
-    .hero h1{
-      font-size:42px;line-height:1.15;background:linear-gradient(90deg, #fff, #cbd5e1);
-      -webkit-background-clip:text;background-clip:text;color:transparent
-    }
-    .hero-sub{font-size:18px;color:#cbd5e1;margin-bottom:24px}
-    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;
-      text-decoration:none;font-weight:600;border:1px solid var(--glass-border)
-    }
-    .btn-primary{background:var(--gold);color:#0b1220}
-    .btn-outline{color:var(--text);background:transparent}
-    .hero-stats{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px
-    }
-    .stat{
-      background:rgba(2,12,27,0.5);border:1px solid var(--glass-border);border-radius:12px;padding:16px;text-align:center
-    }
-    .stat h3{color:var(--gold);font-size:24px;margin-bottom:6px}
-    .stat p{margin:0;color:#cbd5e1}
-
-    .hero-visual{
-      position:relative;display:grid;gap:16px
-    }
-    .visual-tile{
-      background:linear-gradient(180deg, rgba(2,12,27,0.65), rgba(2,12,27,0.35));
-      border:1px solid var(--glass-border);border-radius:16px;padding:24px;box-shadow:var(--shadow)
-    }
-    .visual-tile i{font-size:28px;color:var(--gold)}
-    .visual-tile h4{margin:10px 0 6px}
-    .visual-tile p{margin:0;color:#cbd5e1}
-
-    /* Section headers */
-    .section-head{
-      display:flex;align-items:end;justify-content:space-between;margin-bottom:24px
-    }
-    .section-title{
-      display:flex;align-items:center;gap:12px
-    }
-    .section-title i{color:var(--gold)}
-    .section-title h2{font-size:28px}
-
-    /* Services: glassmorphism cards */
-    .cards{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:20px
-    }
-    .card{
-      position:relative;background:var(--card-bg);border:1px solid var(--glass-border);
-      border-radius:16px;padding:20px;box-shadow:var(--shadow);overflow:hidden
-    }
-    .card::after{
-      content:'';position:absolute;inset:0;background:linear-gradient(120deg, rgba(252,196,25,0.08), transparent 40%);
-      opacity:0;transition:opacity .3s
-    }
-    .card:hover::after{opacity:1}
-    .card i{font-size:26px;color:var(--gold)}
-    .card h4{margin:10px 0 6px}
-    .card p{margin:0;color:#cbd5e1}
-    .badge{
-      position:absolute;top:14px;right:14px;background:rgba(252,196,25,0.15);color:var(--gold);
-      border:1px solid var(--gold);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700
-    }
-
-    /* Store grid */
-    .store-grid{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:20px
-    }
-    .product{
-      background:var(--card-bg);border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)
-    }
-    .product-media{
-      position:relative;background:linear-gradient(180deg, rgba(2,12,27,0.65), rgba(2,12,27,0.35));
-      display:flex;align-items:center;justify-content:center;height:160px
-    }
-    .product-media img{max-height:120px;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.35))}
-    .product-body{padding:16px}
-    .product-title{font-weight:600;margin:0 0 6px}
-    .product-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-    .tag{
-      border:1px dashed var(--glass-border);color:#cbd5e1;padding:4px 8px;border-radius:999px;font-size:12px
-    }
-    .discount{
-      background:rgba(252,196,25,0.15);color:var(--gold);border:1px solid var(--gold)
-    }
-    .price{
-      display:flex;align-items:center;gap:10px;margin:10px 0;color:#cbd5e1
-    }
-    .price .old{color:var(--muted);text-decoration:line-through}
-    .product-actions{display:flex;gap:10px}
-    .btn-order{
-      flex:1;background:var(--gold);color:#0b1220;border-radius:10px;padding:10px 12px;text-decoration:none;font-weight:700;text-align:center
-    }
-    .btn-view{
-      flex:1;border:1px solid var(--glass-border);color:var(--text);border-radius:10px;padding:10px 12px;text-decoration:none;text-align:center
-    }
-
-    /* Projects */
-    .projects-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:20px
-    }
-    .project{
-      background:var(--card-bg);border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)
-    }
-    .project-media{
-      height:180px;background:linear-gradient(180deg, rgba(2,12,27,0.65), rgba(2,12,27,0.35));
-      display:flex;align-items:center;justify-content:center
-    }
-    .project-media img{width:100%;height:100%;object-fit:cover;opacity:0.9}
-    .project-body{padding:16px}
-    .project-body h4{margin:0 0 6px}
-    .project-body p{margin:0}
-
-    /* Trust bar */
-    .trust{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:16px
-    }
-    .trust-item{
-      background:rgba(2,12,27,0.5);border:1px solid var(--glass-border);border-radius:12px;padding:16px;text-align:center
-    }
-    .trust-item h3{color:var(--gold);font-size:24px;margin-bottom:6px}
-    .trust-item p{margin:0}
-
-    /* Contact + Map */
-    .contact-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:24px
-    }
-    .contact-card{
-      background:var(--card-bg);border:1px solid var(--glass-border);border-radius:16px;padding:20px;box-shadow:var(--shadow)
-    }
-    .contact-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-    .contact-list li{display:flex;align-items:center;gap:12px}
-    .contact-list i{color:var(--gold)}
-    .map{
-      border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)
-    }
-    .map iframe{width:100%;height:320px;border:0;filter:invert(0.92) hue-rotate(180deg) saturate(0.6) brightness(0.9)}
-
-    /* Footer */
-    footer{
-      border-top:1px solid var(--glass-border);padding:24px 0;color:#cbd5e1
-    }
-    .footer-row{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap
-    }
-    .footer-row a{color:#cbd5e1;text-decoration:none}
-    .footer-row a:hover{color:var(--gold)}
-
-    /* Responsive */
-    @media (max-width:1024px){
-      .cards{grid-template-columns:repeat(2,1fr)}
-      .store-grid{grid-template-columns:repeat(2,1fr)}
-      .projects-grid{grid-template-columns:repeat(2,1fr)}
-      .hero-grid{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
-    }
-    @media (max-width:640px){
-      .cards{grid-template-columns:1fr}
-      .store-grid{grid-template-columns:1fr}
-      .projects-grid{grid-template-columns:1fr}
-      .hero h1{font-size:32px}
-      .nav ul{display:none}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassan Electric & Cool Services | Engineering Excellence</title>
+    
+    <meta name="description" content="Industrial-grade Solar, HVAC, and Electrical Engineering in Rawalpindi/Islamabad. Shop #5, Mini Commercial, Bahria Phase 7.">
+    <link rel="canonical" href="https://www.hassanelectric.live/">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="topbar">
-    <div class="container nav">
-      <div class="brand">
-        <i class="fa-solid fa-bolt fa-lg"></i>
-        <span>Hassan Electric & Cool Services</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#store">Store</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="cta-whatsapp" href="https://wa.me/923025070541?text=Hello%20Hassan%20Electric%2C%20I%20want%20to%20book%20a%20service." target="_blank" rel="noopener">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span>WhatsApp</span>
-      </a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-card">
-        <h1>Industrial-grade Solar, HVAC & Electrical Engineering</h1>
-        <p class="hero-sub">
-          From large-scale solar installations to precision HVAC and electrical maintenance—built to global standards, delivered locally.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/923025070541?text=Hi%20Hassan%20Electric%2C%20I%20want%20to%20book%20a%20service." target="_blank" rel="noopener">
-            <i class="fa-solid fa-calendar-check"></i> Book a Service
-          </a>
-          <a class="btn btn-outline" href="#projects">
-            <i class="fa-solid fa-diagram-project"></i> View Projects
-          </a>
+    <header>
+        <div class="nav-container">
+            <div class="brand">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <span>HASSAN ELECTRIC</span>
+            </div>
+            <div class="header-actions">
+                <a href="https://wa.me/923025070541" class="wa-btn-top"><i class="fa-brands fa-whatsapp"></i> +92 302 5070541</a>
+            </div>
         </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <h3>12+ yrs</h3>
-            <p>Experience</p>
-          </div>
-          <div class="stat">
-            <h3>350+</h3>
-            <p>Projects Delivered</p>
-          </div>
-          <div class="stat">
-            <h3>99.2%</h3>
-            <p>Client Satisfaction</p>
-          </div>
+    </header>
+
+    <main class="tab-system">
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="services-tab">Services</button>
+            <button class="tab-btn" data-tab="store-tab">Store</button>
+            <button class="tab-btn" data-tab="projects-tab">Projects</button>
+            <button class="tab-btn" data-tab="contact-tab">Location</button>
+        </nav>
+
+        <div class="container">
+            <section id="services-tab" class="tab-content active">
+                <div class="section-intro">
+                    <h2>Engineering Expertise</h2>
+                    <p>International standard maintenance and installation services.</p>
+                </div>
+                <div class="grid" id="services-grid">
+                    </div>
+            </section>
+
+            <section id="store-tab" class="tab-content">
+                <div class="section-intro">
+                    <h2>Premium Inventory</h2>
+                    <div class="filter-bar">
+                        <button class="filter-btn active" data-filter="All">All</button>
+                        <button class="filter-btn" data-filter="Solar">Solar</button>
+                        <button class="filter-btn" data-filter="Lighting">Lighting</button>
+                        <button class="filter-btn" data-filter="Electrical">Electrical</button>
+                    </div>
+                </div>
+                <div class="grid" id="inventory-grid"></div>
+            </section>
+
+            <section id="projects-tab" class="tab-content">
+                <div class="section-intro">
+                    <h2>Project Portfolio</h2>
+                </div>
+                <div class="grid" id="projects-grid"></div>
+            </section>
+
+            <section id="contact-tab" class="tab-content">
+                <div class="contact-layout">
+                    <div class="info-card">
+                        <h3>Visit Our Workshop</h3>
+                        <p><i class="fa-solid fa-map-location-dot"></i> Shop #5, Mini Commercial, Bahria Phase 7, Rawalpindi</p>
+                        <p><i class="fa-solid fa-clock"></i> Mon-Sat (10:00 AM - 08:00 PM)</p>
+                        <a href="https://wa.me/923025070541" class="order-btn" style="background: #fcc419; color: #020c1b;">Request Site Visit</a>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.257375252!2d73.091!3d33.525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDMxJzMwLjAiTiA3M8KwMDUnMjcuNiJF!5e0!3m2!1sen!2s!4v1633000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
+    </main>
 
-      <div class="hero-visual">
-        <div class="visual-tile">
-          <i class="fa-solid fa-solar-panel"></i>
-          <h4>Solar Solutions</h4>
-          <p>Industrial & domestic PV systems with smart inverters and robust wiring.</p>
-        </div>
-        <div class="visual-tile">
-          <i class="fa-solid fa-snowflake"></i>
-          <h4>HVAC & AC Repair</h4>
-          <p>Diagnostics, servicing, and performance optimization for all major brands.</p>
-        </div>
-        <div class="visual-tile">
-          <i class="fa-solid fa-plug-circle-bolt"></i>
-          <h4>Electrical Maintenance</h4>
-          <p>Preventive care, load balancing, and safety-first installations.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <footer>
+        <p>© <span id="year"></span> Hassan Electric & Cool Services | Bahria Phase 7 Engineering Hub</p>
+    </footer>
 
-  <!-- Services -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-title">
-          <i class="fa-solid fa-briefcase"></i>
-          <h2>Services</h2>
-        </div>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <span class="badge">Industrial</span>
-          <i class="fa-solid fa-solar-panel"></i>
-          <h4>Solar Solutions</h4>
-          <p>Design, procurement, and commissioning of high-efficiency PV systems.</p>
-        </div>
-        <div class="card">
-          <span class="badge">Priority</span>
-          <i class="fa-solid fa-snowflake"></i>
-          <h4>HVAC & AC Repairing</h4>
-          <p>Rapid diagnostics, compressor checks, refrigerant handling, and tuning.</p>
-        </div>
-        <div class="card">
-          <span class="badge">Certified</span>
-          <i class="fa-solid fa-house-chimney-crack"></i>
-          <h4>House Wiring</h4>
-          <p>Code-compliant wiring, panel upgrades, and smart switch integration.</p>
-        </div>
-        <div class="card">
-          <span class="badge">24/7</span>
-          <i class="fa-solid fa-screwdriver-wrench"></i>
-          <h4>Electrical Maintenance</h4>
-          <p>Preventive schedules, fault isolation, and emergency response.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Store -->
-  <section id="store">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-title">
-          <i class="fa-solid fa-store"></i>
-          <h2>Store</h2>
-        </div>
-        <p>Premium components and accessories—curated for reliability and performance.</p>
-      </div>
-
-      <div id="storeGrid" class="store-grid"><!-- JS renders products here --></div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-title">
-          <i class="fa-solid fa-diagram-project"></i>
-          <h2>Projects</h2>
-        </div>
-        <p>Selected installations across industrial and residential sectors.</p>
-      </div>
-
-      <div class="projects-grid">
-        <div class="project">
-          <div class="project-media">
-            <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="Industrial solar array" />
-          </div>
-          <div class="project-body">
-            <h4>Industrial Rooftop PV—50kW</h4>
-            <p>High-yield array with smart monitoring and surge protection.</p>
-          </div>
-        </div>
-        <div class="project">
-          <div class="project-media">
-            <img src="https://images.unsplash.com/photo-1581091012184-7c54a6b2c1d3?q=80&w=1200&auto=format&fit=crop" alt="HVAC plant" />
-          </div>
-          <div class="project-body">
-            <h4>HVAC Optimization—Commercial</h4>
-            <p>Load balancing, ducting improvements, and energy savings.</p>
-          </div>
-        </div>
-        <div class="project">
-          <div class="project-media">
-            <img src="https://images.unsplash.com/photo-1600607687920-4ce1f1c1d8f2?q=80&w=1200&auto=format&fit=crop" alt="Electrical panel" />
-          </div>
-          <div class="project-body">
-            <h4>Panel Upgrade—Residential</h4>
-            <p>Smart switches, safety breakers, and clean cable management.</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:24px" class="trust">
-        <div class="trust-item">
-          <h3>ISO Mindset</h3>
-          <p>Process-driven delivery</p>
-        </div>
-        <div class="trust-item">
-          <h3>Rapid SLA</h3>
-          <p>Response within 24h</p>
-        </div>
-        <div class="trust-item">
-          <h3>Warranty</h3>
-          <p>Parts & labor coverage</p>
-        </div>
-        <div class="trust-item">
-          <h3>Safety First</h3>
-          <p>Compliance & QA</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Map -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-title">
-          <i class="fa-solid fa-address-card"></i>
-          <h2>Contact</h2>
-        </div>
-        <p>WhatsApp-first approach for swift coordination and scheduling.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>Hassan Electric & Cool Services</h3>
-          <ul class="contact-list">
-            <li><i class="fa-solid fa-location-dot"></i> Shop #5, Mini Commercial, Bahria Phase 7, Rawalpindi/Islamabad</li>
-            <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/923025070541?text=Hello%20Hassan%20Electric%2C%20I%20need%20assistance." target="_blank" rel="noopener">+92 302 5070541</a></li>
-            <li><i class="fa-solid fa-clock"></i> Mon–Sat: 10:00–20:00</li>
-          </ul>
-          <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
-            <a class="btn btn-primary" href="https://wa.me/923025070541?text=Hi%20Hassan%20Electric%2C%20please%20schedule%20a%20site%20visit." target="_blank" rel="noopener">
-              <i class="fa-solid fa-calendar-days"></i> Schedule Visit
-            </a>
-            <a class="btn btn-outline" href="#store">
-              <i class="fa-solid fa-cart-shopping"></i> Browse Store
-            </a>
-          </div>
-        </div>
-
-        <div class="map">
-          <!-- Dark-themed map via CSS filter on embed -->
-          <iframe
-            src="https://www.google.com/maps?q=Mini%20Commercial%20Bahria%20Phase%207%20Rawalpindi&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Bahria Phase 7 - Mini Commercial">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-row">
-      <div>© <span id="year"></span> Hassan Electric & Cool Services</div>
-      <div style="display:flex;gap:16px">
-        <a href="#home"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
-        <a href="https://wa.me/923025070541?text=Hello%20Hassan%20Electric%2C%20I%20have%20a%20question." target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Smooth-scroll offset fix for sticky header (optional enhancement)
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){
-          e.preventDefault();
-          const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
-          window.scrollTo({top:y, behavior:'smooth'});
-        }
-      });
-    });
-
-    // Dynamic Inventory System
-    const products = [
-      {
-        name: 'LED Bulb 12W',
-        category: 'LED Bulbs',
-        price: 950,
-        oldPrice: 1050,
-        discountBadge: 'Winter Deal',
-        statusTags: ['New Arrival'],
-        image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop'
-      },
-      {
-        name: 'SMD Tube Light 18W',
-        category: 'SMD Tube Lights',
-        price: 1450,
-        oldPrice: 1650,
-        discountBadge: '10% OFF',
-        statusTags: ['Hot Seller'],
-        image: 'https://images.unsplash.com/photo-1605733160314-4f3c3b4c1f1a?q=80&w=800&auto=format&fit=crop'
-      },
-      {
-        name: 'Heating Rod 1500W',
-        category: 'Heating Rods',
-        price: 2200,
-        oldPrice: null,
-        discountBadge: null,
-        statusTags: ['Durable'],
-        image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop'
-      },
-      {
-        name: 'Switch Board (4-Gang)',
-        category: 'Switch Boards',
-        price: 1850,
-        oldPrice: 2100,
-        discountBadge: 'Bundle Deal',
-        statusTags: ['New Arrival', 'Premium'],
-        image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop'
-      },
-      {
-        name: 'Socket (Universal)',
-        category: 'Sockets',
-        price: 650,
-        oldPrice: 750,
-        discountBadge: '5% OFF',
-        statusTags: ['Hot Seller'],
-        image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop'
-      },
-      {
-        name: 'Power Inverter 3kVA',
-        category: 'Power Inverters',
-        price: 68500,
-        oldPrice: 72500,
-        discountBadge: 'Energy Saver',
-        statusTags: ['Recommended', 'Warranty'],
-        image: 'https://images.unsplash.com/photo-1581091012184-7c54a6b2c1d3?q=80&w=800&auto=format&fit=crop'
-      }
-    ];
-
-    const storeGrid = document.getElementById('storeGrid');
-
-    function formatPKR(n){
-      return 'PKR ' + n.toLocaleString('en-PK');
-    }
-
-    function whatsappLink(productName){
-      const base = 'https://wa.me/923025070541';
-      const msg = `Hello Hassan Electric, I want to order: ${productName}`;
-      return `${base}?text=${encodeURIComponent(msg)}`;
-    }
-
-    function renderProducts(){
-      storeGrid.innerHTML = '';
-      products.forEach(p=>{
-        const card = document.createElement('div');
-        card.className = 'product';
-
-        const media = document.createElement('div');
-        media.className = 'product-media';
-
-        const img = document.createElement('img');
-        img.src = p.image;
-        img.alt = p.name;
-        media.appendChild(img);
-
-        if(p.discountBadge){
-          const disc = document.createElement('span');
-          disc.className = 'badge';
-          disc.textContent = p.discountBadge;
-          media.appendChild(disc);
-        }
-
-        const body = document.createElement('div');
-        body.className = 'product-body';
-
-        const title = document.createElement('h4');
-        title.className = 'product-title';
-        title.textContent = p.name;
-        body.appendChild(title);
-
-        const meta = document.createElement('div');
-        meta.className = 'product-meta';
-
-        const cat = document.createElement('span');
-        cat.className = 'tag';
-        cat.textContent = p.category;
-        meta.appendChild(cat);
-
-        (p.statusTags || []).forEach(t=>{
-          const tag = document.createElement('span');
-          tag.className = 'tag';
-          tag.textContent = t;
-          meta.appendChild(tag);
-        });
-
-        body.appendChild(meta);
-
-        const price = document.createElement('div');
-        price.className = 'price';
-        const now = document.createElement('span');
-        now.className = 'now';
-        now.textContent = formatPKR(p.price);
-        price.appendChild(now);
-
-        if(p.oldPrice){
-          const old = document.createElement('span');
-          old.className = 'old';
-          old.textContent = formatPKR(p.oldPrice);
-          price.appendChild(old);
-        }
-        body.appendChild(price);
-
-        const actions = document.createElement('div');
-        actions.className = 'product-actions';
-
-        const order = document.createElement('a');
-        order.className = 'btn-order';
-        order.href = whatsappLink(p.name);
-        order.target = '_blank';
-        order.rel = 'noopener';
-        order.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Order';
-        actions.appendChild(order);
-
-        const view = document.createElement('a');
-        view.className = 'btn-view';
-        view.href = '#projects';
-        view.innerHTML = '<i class="fa-solid fa-eye"></i> Details';
-        actions.appendChild(view);
-
-        body.appendChild(actions);
-
-        card.appendChild(media);
-        card.appendChild(body);
-        storeGrid.appendChild(card);
-      });
-    }
-
-    renderProducts();
-  </script>
+    <script src="inventory.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
