@@ -13,6 +13,10 @@ const progress = document.getElementById("progress");
 let loadedTasks = 0;
 const TOTAL_TASKS = 2;
 
+const LOADER_MIN_TIME = 1800; // milliseconds
+const loaderStartTime = Date.now();
+
+
 function advanceLoader() {
   loadedTasks++;
   if (progress) {
