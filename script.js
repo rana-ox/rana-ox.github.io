@@ -1,68 +1,114 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Loading Simulation
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. NEURAL CURSOR ENGINE
+    const dot = document.getElementById('cursor-dot');
+    const outline = document.getElementById('cursor-outline');
+    window.addEventListener('mousemove', (e) => {
+        dot.style.left = e.clientX + 'px';
+        dot.style.top = e.clientY + 'px';
+        outline.style.left = e.clientX + 'px';
+        outline.style.top = e.clientY + 'px';
+    });
+
+    // 2. ISLAMIC BOOT SEQUENCE
     let progress = 0;
     const bar = document.getElementById('loader-bar');
-    const logs = document.getElementById('status-logs');
-    const logMessages = [
-        "> CONNECTING TO GRID...",
-        "> LOADING INVENTORY...",
-        "> SYNCING COORDINATES...",
-        "> BISMILLAH_READY."
-    ];
-
-    const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress > 100) {
-            progress = 100;
-            clearInterval(interval);
+    const bootInterval = setInterval(() => {
+        progress += Math.random() * 20;
+        bar.style.width = Math.min(progress, 100) + '%';
+        if (progress >= 100) {
+            clearInterval(bootInterval);
             setTimeout(() => {
-                document.getElementById('boot-screen').style.transform = "translateY(-100%)";
-            }, 800);
-        }
-        bar.style.width = progress + "%";
-        if (Math.random() > 0.8) {
-            logs.innerHTML += `<br>> ${logMessages[Math.floor(Math.random()*logMessages.length)]}`;
+                document.getElementById('boot-screen').style.transform = 'translateY(-100%)';
+            }, 600);
         }
     }, 150);
 
-    // 2. Tab Navigation
-    const btns = document.querySelectorAll('.nav-btn');
-    const views = document.querySelectorAll('.tab-view');
+    // 3. TAB NAVIGATION SYSTEM (FIXED)
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const tabViews = document.querySelectorAll('.tab-view');
 
-    btns.forEach(btn => {
+    navBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            btns.forEach(b => b.classList.remove('active'));
-            views.forEach(v => v.classList.remove('active'));
+            const target = btn.dataset.tab;
+            
+            // UI Update
+            navBtns.forEach(b => b.classList.remove('active'));
+            tabViews.forEach(v => v.classList.remove('active'));
+            
             btn.classList.add('active');
-            document.getElementById(btn.dataset.tab).classList.add('active');
+            document.getElementById(target).classList.add('active');
+
+            // Close mobile sidebar on click
+            document.getElementById('sidebar').classList.remove('open');
         });
     });
 
-    // 3. Render Injections
-    const sGrid = document.getElementById('service-injection');
-    sGrid.innerHTML = serviceData.map(s => `
-        <div class="unit-card">
-            <i class="fa-solid ${s.icon}"></i>
-            <h3>${s.title}</h3>
-            <p style="color:var(--dim-text); font-size:12px; margin-top:10px;">${s.body}</p>
-        </div>
-    `).join('');
+    // 4. MOBILE MENU TOGGLE
+    const toggle = document.getElementById('mobile-toggle');
+    toggle.addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('open');
+    });
 
-    const pGrid = document.getElementById('product-injection');
-    pGrid.innerHTML = productData.map(p => `
-        <div class="unit-card">
-            <div style="height:150px; background:#080808; margin-bottom:15px; display:flex; align-items:center; justify-content:center;">
-                <img src="${p.img}" style="max-height:80%; filter:grayscale(1);">
-            </div>
-            <small style="color:var(--gold)">${p.cat}</small>
-            <h4>${p.name}</h4>
-            <div style="font-size:1.5rem; margin:10px 0;">PKR ${p.price}</div>
-            <a href="https://wa.me/923025070541" class="wa-btn" style="display:block; text-align:center; text-decoration:none; border:1px solid var(--gold); color:var(--gold); padding:10px; font-size:10px;">REQUEST_QUOTE</a>
-        </div>
-    `).join('');
+    // 5. AUTOMATION: GOOGLE SHEETS SYNC ENGINE
+    // Replace with your CSV link: File > Share > Publish to web > CSV
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS2S...YOUR_ID.../pub?output=csv';
 
-    // 4. Clock
+    const syncBtn = document.getElementById('sync-trigger');
+    const syncInjection = document.getElementById('auto-sync-injection');
+    const syncNotice = document.getElementById('sync-notice');
+
+    async function fetchLiveRates() {
+        syncNotice.innerText = "CONNECTING_TO_CLOUD_DATABASE...";
+        syncBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SYNCING...';
+
+        try {
+            const response = await fetch(SHEET_CSV_URL);
+            const data = await response.text();
+            const rows = data.split('\n').slice(1); // Remove headers
+
+            syncInjection.innerHTML = rows.map(row => {
+                const [name, price, category, icon] = row.split(',');
+                if(!name) return '';
+                return `
+                    <div class="tech-card">
+                        <i class="fa-solid ${icon || 'fa-box-open'}"></i>
+                        <small style="color:var(--gold)">${category}</small>
+                        <h3>${name}</h3>
+                        <div style="font-size: 1.5rem; margin: 15px 0;">PKR ${price}</div>
+                        <a href="https://wa.me/923025070541?text=Inquiry: ${name}" class="wa-btn" style="display:block; text-align:center; text-decoration:none;">ORDER_NOW</a>
+                    </div>
+                `;
+            }).join('');
+
+            syncNotice.innerText = "SYNC_SUCCESSFUL // " + new Date().toLocaleTimeString();
+        } catch (error) {
+            syncNotice.innerText = "SYNC_FAILED: CHECK_URL_OR_CONNECTION";
+            // Fallback content if URL is not yet set
+            syncInjection.innerHTML = '<p style="padding:20px;">Please link your Google Sheet CSV URL in script.js to see live data.</p>';
+        } finally {
+            syncBtn.innerHTML = '<i class="fa-solid fa-rotate"></i> REFRESH_RATES';
+        }
+    }
+
+    syncBtn.addEventListener('click', fetchLiveRates);
+
+    // 6. CLOCK & STATIC DATA
     setInterval(() => {
         document.getElementById('clock').innerText = new Date().toLocaleTimeString();
     }, 1000);
+
+    // Pre-fill Services
+    const serviceData = [
+        { title: "SOLAR.GRID", icon: "fa-solar-panel", desc: "Industrial Hybrid & On-Grid Solutions." },
+        { title: "HVAC.SYSTEMS", icon: "fa-snowflake", desc: "Enterprise Cooling & VRF Maintenance." },
+        { title: "POWER.WIRING", icon: "fa-plug-circle-bolt", desc: "Smart Panel Design & Load Balancing." }
+    ];
+    document.getElementById('service-injection').innerHTML = serviceData.map(s => `
+        <div class="tech-card">
+            <i class="fa-solid ${s.icon}"></i>
+            <h3>${s.title}</h3>
+            <p style="color:var(--text-dim); font-size:12px;">${s.desc}</p>
+        </div>
+    `).join('');
 });
