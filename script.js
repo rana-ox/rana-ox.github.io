@@ -1,70 +1,74 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Tab System
-    const tabs = document.querySelectorAll('.tab-btn');
-    const contents = document.querySelectorAll('.tab-content');
+    // 1. Loader Removal
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+    }, 1500);
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
+    // 2. Tab Engine
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.dataset.tab;
+            tabBtns.forEach(b => b.classList.remove('active'));
+            sections.forEach(s => s.classList.remove('active'));
+            
+            btn.classList.add('active');
+            document.getElementById(target).classList.add('active');
         });
     });
 
-    // 2. Render Services
+    // 3. Render Services
     const serviceGrid = document.getElementById('services-grid');
-    serviceGrid.innerHTML = serviceData.map(s => `
+    serviceGrid.innerHTML = services.map(s => `
         <div class="card">
-            <i class="fa-solid ${s.icon}" style="font-size: 2.5rem; color: #fcc419; margin-bottom: 15px;"></i>
+            <i class="fa-solid ${s.icon}"></i>
             <h3>${s.title}</h3>
-            <p style="color: #8892b0;">${s.desc}</p>
+            <p style="color: #8892b0">${s.desc}</p>
         </div>
     `).join('');
 
-    // 3. Render Store (with Filtering)
+    // 4. Render Store (Catalog)
     const storeGrid = document.getElementById('inventory-grid');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-
-    function renderProducts(category = 'All') {
-        const filtered = category === 'All' ? productData : productData.filter(p => p.cat === category);
-        storeGrid.innerHTML = filtered.map(p => `
+    function renderInventory(filter = 'All') {
+        const filtered = filter === 'All' ? inventory : inventory.filter(item => item.cat === filter);
+        storeGrid.innerHTML = filtered.map(item => `
             <div class="product-card">
                 <div class="product-img">
-                    <span class="badge">${p.badge}</span>
-                    <img src="${p.img}" alt="${p.name}">
+                    <span style="position:absolute; top:10px; right:10px; background:#fcc419; color:#000; font-size:0.6rem; font-weight:800; padding:5px 10px; border-radius:3px;">${item.tag}</span>
+                    <img src="${item.img}" alt="${item.name}">
                 </div>
-                <div class="product-info">
-                    <small>${p.cat}</small>
-                    <h3 style="font-size: 1.1rem; margin: 5px 0;">${p.name}</h3>
-                    <p style="font-weight: 700; font-size: 1.2rem;">Rs. ${p.price}</p>
-                    <a href="https://wa.me/923025070541?text=Order:%20${p.name}" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                <div style="padding: 20px">
+                    <small style="color:#666; text-transform:uppercase">${item.cat}</small>
+                    <h4 style="margin: 5px 0">${item.name}</h4>
+                    <p style="font-size: 1.4rem; font-weight: 800">Rs. ${item.price}</p>
                 </div>
+                <a href="https://wa.me/923025070541?text=Quotation%20Request:%20${item.name}" class="order-btn">SEND INQUIRY</a>
             </div>
         `).join('');
     }
+    renderInventory();
 
-    filterBtns.forEach(btn => {
+    // 5. Store Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            renderProducts(btn.dataset.filter);
+            renderInventory(btn.dataset.filter);
         });
     });
 
-    // 4. Render Projects
+    // 6. Engineering Logs
     const projectGrid = document.getElementById('projects-grid');
-    projectGrid.innerHTML = projectData.map(prj => `
-        <div class="card" style="border-left: 4px solid #fcc419;">
-            <span style="font-size: 0.7rem; color: #fcc419; text-transform: uppercase;">${prj.tag}</span>
-            <h3 style="margin: 5px 0;">${prj.title}</h3>
-            <p><i class="fa-solid fa-location-dot"></i> ${prj.loc}</p>
+    projectGrid.innerHTML = engineeringLogs.map(log => `
+        <div class="card" style="border-left: 5px solid #fcc419">
+            <h3>${log.site}</h3>
+            <p style="color: #8892b0">Scope: ${log.scope}</p>
         </div>
     `).join('');
 
-    // Set Year
     document.getElementById('year').textContent = new Date().getFullYear();
-    renderProducts();
 });
