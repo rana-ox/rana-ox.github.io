@@ -8,6 +8,22 @@ const SERVICES_CSV =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=1319615574&single=true&output=csv";
 
 /* ===============================
+   SIMPLE LOADER HANDLER
+=============================== */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (!loader) return;
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    loader.style.pointerEvents = "none";
+
+    setTimeout(() => loader.remove(), 500);
+  }, 1200); // loader visible for 1.2s (smooth UX)
+});
+
+
+/* ===============================
    SAFE CSV PARSER
 =============================== */
 function parseCSV(text) {
