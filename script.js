@@ -46,8 +46,7 @@ if (inventoryBody) {
             <td>
               <a href="https://wa.me/923025070541?text=Inquiry%20for%20${encodeURIComponent(name)}"
                  target="_blank">WhatsApp</a>
-            </td>
-          </tr>
+            </div>
         `);
       });
     })
