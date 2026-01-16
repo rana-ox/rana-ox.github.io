@@ -1,8 +1,8 @@
 /* ==============================
    CONFIG
 ============================== */
-const inventoryCSV = "PASTE_GOOGLE_SHEET_1_CSV_LINK_HERE";
-const servicesCSV  = "PASTE_GOOGLE_SHEET_2_CSV_LINK_HERE";
+const inventoryCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=0&single=true&output=csv";
+const servicesCSV  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=1319615574&single=true&output=csv";
 
 /* ==============================
    LOADER SETUP (INDEX ONLY SAFE)
