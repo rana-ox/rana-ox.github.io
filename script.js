@@ -19,15 +19,21 @@ function advanceLoader() {
     progress.style.width = (loadedTasks / TOTAL_TASKS) * 100 + "%";
   }
 
-  if (loadedTasks === TOTAL_TASKS && loader) {
-    setTimeout(() => {
-      loader.style.opacity = "0";
-      loader.style.pointerEvents = "none";
-      setTimeout(() => loader.remove(), 400);
-    }, 300);
-  }
+   if (loadedTasks === TOTAL_TASKS && loader) {
+  const elapsed = Date.now() - loaderStartTime;
+  const remaining = Math.max(0, LOADER_MIN_TIME - elapsed);
+
+  setTimeout(() => {
+    loader.style.transition = "opacity 0.5s ease";
+    loader.style.opacity = "0";
+    loader.style.pointerEvents = "none";
+
+    setTimeout(() => loader.remove(), 500);
+  }, remaining);
 }
 
+
+   
 /* ==============================
    INVENTORY FETCH
 ============================== */
