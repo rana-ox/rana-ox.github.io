@@ -16,10 +16,11 @@ function parseCSV(text) {
     .split("\n")
     .slice(1)
     .map(row =>
-      row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)
+      row
+        .match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)
         ?.map(c => c.replace(/^"|"$/g, "").trim())
     )
-    .filter(Boolean);
+    .filter(row => row && row.length);
 }
 
 /* ===============================
@@ -34,7 +35,7 @@ if (inventoryBody) {
       const rows = parseCSV(csv);
 
       rows.forEach(cols => {
-        const [name, price, category, discount, image, net] = cols;
+        const [name, category, price, discount, net] = cols;
 
         inventoryBody.insertAdjacentHTML("beforeend", `
           <tr>
@@ -46,7 +47,8 @@ if (inventoryBody) {
             <td>
               <a href="https://wa.me/923025070541?text=Inquiry%20for%20${encodeURIComponent(name)}"
                  target="_blank">WhatsApp</a>
-            </div>
+            </td>
+          </tr>
         `);
       });
     })
@@ -71,7 +73,7 @@ if (servicesContainer) {
           <div class="card">
             <h3>${title}</h3>
             <p>${desc}</p>
-            <small>${specs}</small>
+            <small>${specs}</small><br>
             <a href="https://wa.me/923025070541?text=Inquiry%20for%20${encodeURIComponent(title)}"
                target="_blank">WhatsApp</a>
           </div>
@@ -85,9 +87,12 @@ if (servicesContainer) {
    SOLAR CALCULATOR
 =============================== */
 function calculateSolar() {
-  const units = Number(document.getElementById("units")?.value);
+  const input = document.getElementById("units");
   const result = document.getElementById("result");
 
+  if (!input || !result) return;
+
+  const units = Number(input.value);
   if (!units || units <= 0) {
     result.innerHTML = "Please enter valid monthly units.";
     return;
