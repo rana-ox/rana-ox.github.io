@@ -1,51 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardware Vault | Hassan Electric</title>
-    <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Inventory | Hassan Electric</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
 </head>
-<body class="sub-page">
 
-    <div class="navbar">
-        <div class="container nav-flex">
-            <a href="../index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Return to Headquarters</a>
-            <div class="status-indicator"><span class="pulse"></span> LIVE_SYNC_ACTIVE</div>
-        </div>
-    </div>
+<body>
+<header class="navbar">
+  <nav>
+    <a href="../index.html">Home</a>
+  </nav>
+</header>
 
-    <main class="container" style="padding-top: 60px; padding-bottom: 100px;">
-        <div class="page-title">
-            <h1 style="font-size: 3rem; margin-bottom: 10px;">HARDWARE <span class="outline">VAULT</span></h1>
-            <p style="color: #94a3b8; max-width: 600px;">Real-time pricing for Tier-1 Solar components and Industrial Electrical hardware in Rawalpindi.</p>
-        </div>
+<button class="back" onclick="location.href='../index.html'">← Return to Headquarters</button>
 
-        <div class="inventory-controls" style="margin-top: 40px; display: flex; gap: 20px;">
-            <input type="text" id="inventorySearch" placeholder="SEARCH CATALOG (e.g. Inverter, Panel, Breaker...)" 
-                   style="flex: 1; padding: 18px; background: #0f172a; border: 1px solid #1e293b; color: #fff; border-radius: 4px;">
-        </div>
+<div class="table-wrap">
+  <table id="inventoryTable">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Category</th>
+        <th>Market Price</th>
+        <th>Discount</th>
+        <th>Net Price</th>
+        <th>Order</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 
-        <div class="table-frame">
-            <table>
-                <thead>
-                    <tr>
-                        <th>EQUIPMENT_ID</th>
-                        <th>SPECIFICATION</th>
-                        <th>MARKET_PRICE</th>
-                        <th>DISCOUNT</th>
-                        <th>NET_TOTAL</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody id="inventory-body">
-                    </tbody>
-            </table>
-        </div>
-    </main>
-
-    <script src="../script.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>
