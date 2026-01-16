@@ -1,175 +1,96 @@
-/* ==============================
+/* ===============================
    CONFIG
-============================== */
-const inventoryCSV =
+=============================== */
+const INVENTORY_CSV =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=0&single=true&output=csv";
 
-const servicesCSV =
+const SERVICES_CSV =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=1319615574&single=true&output=csv";
 
-/* ==============================
-   LOADER SETUP (SAFE ON ALL PAGES)
-============================== */
-const loader = document.getElementById("loader");
-const progress = document.getElementById("progress");
-
-let loadedTasks = 0;
-const TOTAL_TASKS = 2;
-const LOADER_MIN_TIME = 1800;
-const loaderStartTime = Date.now();
-
-/* ==============================
-   LOADER ADVANCE
-============================== */
-function advanceLoader() {
-  loadedTasks++;
-
-  if (progress) {
-    progress.style.width =
-      Math.min((loadedTasks / TOTAL_TASKS) * 100, 100) + "%";
-  }
-
-  if (loadedTasks >= TOTAL_TASKS && loader) {
-    const elapsed = Date.now() - loaderStartTime;
-    const remaining = Math.max(0, LOADER_MIN_TIME - elapsed);
-
-    setTimeout(() => {
-      loader.style.opacity = "0";
-      loader.style.pointerEvents = "none";
-      setTimeout(() => loader.remove(), 500);
-    }, remaining);
-  }
-}
-
-/* ==============================
-   CSV PARSER (HANDLES COMMAS)
-============================== */
+/* ===============================
+   SAFE CSV PARSER
+=============================== */
 function parseCSV(text) {
-  const rows = [];
-  let current = [];
-  let value = "";
-  let insideQuotes = false;
-
-  for (let char of text) {
-    if (char === '"') insideQuotes = !insideQuotes;
-    else if (char === "," && !insideQuotes) {
-      current.push(value.trim());
-      value = "";
-    } else if (char === "\n" && !insideQuotes) {
-      current.push(value.trim());
-      rows.push(current);
-      current = [];
-      value = "";
-    } else value += char;
-  }
-
-  if (value) {
-    current.push(value.trim());
-    rows.push(current);
-  }
-
-  return rows;
+  return text
+    .trim()
+    .split("\n")
+    .slice(1)
+    .map(row =>
+      row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)
+        ?.map(c => c.replace(/^"|"$/g, "").trim())
+    )
+    .filter(Boolean);
 }
 
-/* ==============================
-   INVENTORY FETCH
-============================== */
-fetch(inventoryCSV)
-  .then(res => res.text())
-  .then(csv => {
-    const rows = parseCSV(csv).slice(1);
-    const tbody = document.querySelector("#inventoryTable tbody");
+/* ===============================
+   INVENTORY
+=============================== */
+const inventoryBody = document.querySelector("#inventoryTable tbody");
 
-    if (!tbody) {
-      advanceLoader();
-      return;
-    }
+if (inventoryBody) {
+  fetch(INVENTORY_CSV)
+    .then(res => res.text())
+    .then(csv => {
+      const rows = parseCSV(csv);
 
-    rows.forEach(cols => {
-      if (cols.length < 6) return;
+      rows.forEach(cols => {
+        const [name, price, category, discount, image, net] = cols;
 
-      const [name, price, category, discount, image, net] = cols;
+        inventoryBody.insertAdjacentHTML("beforeend", `
+          <tr>
+            <td>${name}</td>
+            <td>${category}</td>
+            <td>${price}</td>
+            <td>${discount}</td>
+            <td>${net}</td>
+            <td>
+              <a href="https://wa.me/923025070541?text=Inquiry%20for%20${encodeURIComponent(name)}"
+                 target="_blank">WhatsApp</a>
+            </td>
+          </tr>
+        `);
+      });
+    })
+    .catch(err => console.error("Inventory error:", err));
+}
 
-      tbody.insertAdjacentHTML(
-        "beforeend",
-        `
-        <tr>
-          <td>${name}</td>
-          <td>${category}</td>
-          <td>${price}</td>
-          <td>${discount}</td>
-          <td>${net}</td>
-          <td>
-            <a href="https://wa.me/923025070541?text=${encodeURIComponent(
-              "Inquiry: " + name
-            )}" target="_blank">WhatsApp</a>
-          </td>
-        </tr>
-      `
-      );
-    });
+/* ===============================
+   SERVICES
+=============================== */
+const servicesContainer = document.getElementById("services");
 
-    advanceLoader();
-  })
-  .catch(err => {
-    console.error("Inventory CSV error:", err);
-    advanceLoader();
-  });
+if (servicesContainer) {
+  fetch(SERVICES_CSV)
+    .then(res => res.text())
+    .then(csv => {
+      const rows = parseCSV(csv);
 
-/* ==============================
-   SERVICES FETCH
-============================== */
-fetch(servicesCSV)
-  .then(res => res.text())
-  .then(csv => {
-    const rows = parseCSV(csv).slice(1);
-    const container = document.getElementById("services");
+      rows.forEach(cols => {
+        const [title, desc, specs] = cols;
 
-    if (!container) {
-      advanceLoader();
-      return;
-    }
+        servicesContainer.insertAdjacentHTML("beforeend", `
+          <div class="card">
+            <h3>${title}</h3>
+            <p>${desc}</p>
+            <small>${specs}</small>
+            <a href="https://wa.me/923025070541?text=Inquiry%20for%20${encodeURIComponent(title)}"
+               target="_blank">WhatsApp</a>
+          </div>
+        `);
+      });
+    })
+    .catch(err => console.error("Services error:", err));
+}
 
-    rows.forEach(cols => {
-      if (cols.length < 3) return;
-
-      const [title, desc, specs] = cols;
-
-      container.insertAdjacentHTML(
-        "beforeend",
-        `
-        <div class="card">
-          <h3>${title}</h3>
-          <p>${desc}</p>
-          <small>${specs}</small>
-          <a href="https://wa.me/923025070541?text=${encodeURIComponent(
-            "Inquiry: " + title
-          )}" target="_blank">WhatsApp</a>
-        </div>
-      `
-      );
-    });
-
-    advanceLoader();
-  })
-  .catch(err => {
-    console.error("Services CSV error:", err);
-    advanceLoader();
-  });
-
-/* ==============================
+/* ===============================
    SOLAR CALCULATOR
-============================== */
+=============================== */
 function calculateSolar() {
-  const input = document.getElementById("units");
+  const units = Number(document.getElementById("units")?.value);
   const result = document.getElementById("result");
 
-  if (!input || !result) return;
-
-  const units = Number(input.value);
-
   if (!units || units <= 0) {
-    result.innerHTML = "<span>Please enter valid monthly units.</span>";
+    result.innerHTML = "Please enter valid monthly units.";
     return;
   }
 
@@ -177,7 +98,7 @@ function calculateSolar() {
   const panels = Math.ceil((kw * 1000) / 580);
 
   result.innerHTML = `
-    <strong>Estimated System Size:</strong> ${kw.toFixed(2)} kW<br>
+    <strong>System Size:</strong> ${kw.toFixed(2)} kW<br>
     <strong>Panels Required:</strong> ${panels}
   `;
 }
