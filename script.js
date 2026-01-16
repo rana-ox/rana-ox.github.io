@@ -1,74 +1,68 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Loader Removal
-    setTimeout(() => {
-        const loader = document.getElementById('loader');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 500);
-    }, 1500);
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Loading Simulation
+    let progress = 0;
+    const bar = document.getElementById('loader-bar');
+    const logs = document.getElementById('status-logs');
+    const logMessages = [
+        "> CONNECTING TO GRID...",
+        "> LOADING INVENTORY...",
+        "> SYNCING COORDINATES...",
+        "> BISMILLAH_READY."
+    ];
 
-    // 2. Tab Engine
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const sections = document.querySelectorAll('.tab-content');
+    const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 100) {
+            progress = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+                document.getElementById('boot-screen').style.transform = "translateY(-100%)";
+            }, 800);
+        }
+        bar.style.width = progress + "%";
+        if (Math.random() > 0.8) {
+            logs.innerHTML += `<br>> ${logMessages[Math.floor(Math.random()*logMessages.length)]}`;
+        }
+    }, 150);
 
-    tabBtns.forEach(btn => {
+    // 2. Tab Navigation
+    const btns = document.querySelectorAll('.nav-btn');
+    const views = document.querySelectorAll('.tab-view');
+
+    btns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const target = btn.dataset.tab;
-            tabBtns.forEach(b => b.classList.remove('active'));
-            sections.forEach(s => s.classList.remove('active'));
-            
+            btns.forEach(b => b.classList.remove('active'));
+            views.forEach(v => v.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById(target).classList.add('active');
+            document.getElementById(btn.dataset.tab).classList.add('active');
         });
     });
 
-    // 3. Render Services
-    const serviceGrid = document.getElementById('services-grid');
-    serviceGrid.innerHTML = services.map(s => `
-        <div class="card">
+    // 3. Render Injections
+    const sGrid = document.getElementById('service-injection');
+    sGrid.innerHTML = serviceData.map(s => `
+        <div class="unit-card">
             <i class="fa-solid ${s.icon}"></i>
             <h3>${s.title}</h3>
-            <p style="color: #8892b0">${s.desc}</p>
+            <p style="color:var(--dim-text); font-size:12px; margin-top:10px;">${s.body}</p>
         </div>
     `).join('');
 
-    // 4. Render Store (Catalog)
-    const storeGrid = document.getElementById('inventory-grid');
-    function renderInventory(filter = 'All') {
-        const filtered = filter === 'All' ? inventory : inventory.filter(item => item.cat === filter);
-        storeGrid.innerHTML = filtered.map(item => `
-            <div class="product-card">
-                <div class="product-img">
-                    <span style="position:absolute; top:10px; right:10px; background:#fcc419; color:#000; font-size:0.6rem; font-weight:800; padding:5px 10px; border-radius:3px;">${item.tag}</span>
-                    <img src="${item.img}" alt="${item.name}">
-                </div>
-                <div style="padding: 20px">
-                    <small style="color:#666; text-transform:uppercase">${item.cat}</small>
-                    <h4 style="margin: 5px 0">${item.name}</h4>
-                    <p style="font-size: 1.4rem; font-weight: 800">Rs. ${item.price}</p>
-                </div>
-                <a href="https://wa.me/923025070541?text=Quotation%20Request:%20${item.name}" class="order-btn">SEND INQUIRY</a>
+    const pGrid = document.getElementById('product-injection');
+    pGrid.innerHTML = productData.map(p => `
+        <div class="unit-card">
+            <div style="height:150px; background:#080808; margin-bottom:15px; display:flex; align-items:center; justify-content:center;">
+                <img src="${p.img}" style="max-height:80%; filter:grayscale(1);">
             </div>
-        `).join('');
-    }
-    renderInventory();
-
-    // 5. Store Filters
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderInventory(btn.dataset.filter);
-        });
-    });
-
-    // 6. Engineering Logs
-    const projectGrid = document.getElementById('projects-grid');
-    projectGrid.innerHTML = engineeringLogs.map(log => `
-        <div class="card" style="border-left: 5px solid #fcc419">
-            <h3>${log.site}</h3>
-            <p style="color: #8892b0">Scope: ${log.scope}</p>
+            <small style="color:var(--gold)">${p.cat}</small>
+            <h4>${p.name}</h4>
+            <div style="font-size:1.5rem; margin:10px 0;">PKR ${p.price}</div>
+            <a href="https://wa.me/923025070541" class="wa-btn" style="display:block; text-align:center; text-decoration:none; border:1px solid var(--gold); color:var(--gold); padding:10px; font-size:10px;">REQUEST_QUOTE</a>
         </div>
     `).join('');
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // 4. Clock
+    setInterval(() => {
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+    }, 1000);
 });
