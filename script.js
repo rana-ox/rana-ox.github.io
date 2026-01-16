@@ -5,7 +5,7 @@ const inventoryCSV = "PASTE_GOOGLE_SHEET_1_CSV_LINK_HERE";
 const servicesCSV  = "PASTE_GOOGLE_SHEET_2_CSV_LINK_HERE";
 
 /* ==============================
-   LOADER SAFE HANDLING
+   LOADER SETUP (INDEX ONLY SAFE)
 ============================== */
 const loader   = document.getElementById("loader");
 const progress = document.getElementById("progress");
@@ -13,31 +13,38 @@ const progress = document.getElementById("progress");
 let loadedTasks = 0;
 const TOTAL_TASKS = 2;
 
-const LOADER_MIN_TIME = 1800; // milliseconds
+// Minimum loader visibility (UX polish)
+const LOADER_MIN_TIME = 1800; // ms
 const loaderStartTime = Date.now();
 
-
+/* ==============================
+   LOADER ADVANCE FUNCTION
+============================== */
 function advanceLoader() {
   loadedTasks++;
+
+  // Update progress bar (if loader exists)
   if (progress) {
     progress.style.width = (loadedTasks / TOTAL_TASKS) * 100 + "%";
   }
 
-   if (loadedTasks === TOTAL_TASKS && loader) {
-  const elapsed = Date.now() - loaderStartTime;
-  const remaining = Math.max(0, LOADER_MIN_TIME - elapsed);
+  // Close loader only after all tasks + minimum time
+  if (loadedTasks === TOTAL_TASKS && loader) {
+    const elapsed = Date.now() - loaderStartTime;
+    const remaining = Math.max(0, LOADER_MIN_TIME - elapsed);
 
-  setTimeout(() => {
-    loader.style.transition = "opacity 0.5s ease";
-    loader.style.opacity = "0";
-    loader.style.pointerEvents = "none";
+    setTimeout(() => {
+      loader.style.transition = "opacity 0.5s ease";
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
 
-    setTimeout(() => loader.remove(), 500);
-  }, remaining);
+      setTimeout(() => {
+        loader.remove();
+      }, 500);
+    }, remaining);
+  }
 }
 
-
-   
 /* ==============================
    INVENTORY FETCH
 ============================== */
@@ -49,7 +56,11 @@ fetch(inventoryCSV)
 
     if (tbody) {
       rows.forEach(row => {
-        const [name, price, category, discount, image, net] = row.split(",");
+        const cols = row.split(",");
+        if (cols.length < 6) return;
+
+        const [name, price, category, discount, image, net] = cols;
+
         tbody.insertAdjacentHTML("beforeend", `
           <tr>
             <td>${name}</td>
@@ -84,7 +95,11 @@ fetch(servicesCSV)
 
     if (container) {
       rows.forEach(row => {
-        const [title, desc, specs] = row.split(",");
+        const cols = row.split(",");
+        if (cols.length < 3) return;
+
+        const [title, desc, specs] = cols;
+
         container.insertAdjacentHTML("beforeend", `
           <div class="card">
             <h3>${title}</h3>
@@ -108,13 +123,21 @@ fetch(servicesCSV)
    SOLAR CALCULATOR
 ============================== */
 function calculateSolar() {
-  const units = Number(document.getElementById("units").value);
-  if (!units || units <= 0) return;
+  const input = document.getElementById("units");
+  const result = document.getElementById("result");
+
+  if (!input || !result) return;
+
+  const units = Number(input.value);
+  if (!units || units <= 0) {
+    result.innerHTML = "<span>Please enter valid monthly units.</span>";
+    return;
+  }
 
   const kw = units / 120;
   const panels = (kw * 1000) / 580;
 
-  document.getElementById("result").innerHTML = `
+  result.innerHTML = `
     <strong>System Size:</strong> ${kw.toFixed(2)} kW<br>
     <strong>Panels Required:</strong> ${Math.ceil(panels)}
   `;
