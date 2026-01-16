@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. AUTOMATION: GOOGLE SHEETS SYNC ENGINE
     // Replace with your CSV link: File > Share > Publish to web > CSV
-    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1xsYD4IKE00daV2RP73ppzlYXEvXzwHE2cr274j188Hs/edit?usp=sharing';
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=0&single=true&output=csv';
 
     const syncBtn = document.getElementById('sync-trigger');
     const syncInjection = document.getElementById('auto-sync-injection');
