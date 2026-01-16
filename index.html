@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HASSAN ELECTRIC | ENTERPRISE PORTAL</title>
+    <title>HASSAN ELECTRIC | INDUSTRIAL OPERATIONS</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -16,7 +17,9 @@
     <div id="boot-screen" class="boot-wrapper">
         <div class="boot-content">
             <h1 class="urdu-greeting">اَلسَّلَامُ عَلَيْكُمْ</h1>
-            <div class="loader-container"><div id="loader-bar" class="loader-progress"></div></div>
+            <div class="loader-container">
+                <div id="loader-bar" class="loader-progress"></div>
+            </div>
             <div id="status-logs" class="status-logs">> BISMILLAH_INIT...</div>
         </div>
     </div>
@@ -24,7 +27,7 @@
     <header class="main-header">
         <div class="logo">HASSAN<span class="gold">.ENG</span></div>
         <div class="sys-info">
-            <div class="status-item"><span class="pulse"></span> LIVE_SYNC_READY</div>
+            <div class="status-item"><span class="pulse"></span> DB_STATUS: ONLINE</div>
             <div id="clock">00:00:00</div>
         </div>
     </header>
@@ -33,23 +36,31 @@
         <aside class="sidebar">
             <nav>
                 <button class="nav-link active" data-tab="services">01_SERVICES</button>
-                <button class="nav-link" data-tab="live-sync">02_LIVE_INVENTORY</button>
-                <button class="nav-link" data-tab="contact">03_TERMINAL</button>
+                <button class="nav-link" data-tab="catalog">02_EQUIPMENT</button>
+                <button class="nav-link" data-tab="live-sync">03_LIVE_SYNC</button>
+                <button class="nav-link" data-tab="contact">04_TERMINAL</button>
             </nav>
         </aside>
 
         <main class="viewport">
             <section id="services" class="tab-view active">
-                <h2 class="title-xl">CORE <span class="outline">SYSTEMS</span></h2>
+                <h2 class="title-xl">CORE <span class="outline">DIVISIONS</span></h2>
                 <div class="ent-grid" id="service-grid"></div>
+            </section>
+
+            <section id="catalog" class="tab-view">
+                <h2 class="title-xl">TECHNICAL <span class="outline">UNITS</span></h2>
+                <div class="ent-grid" id="static-grid"></div>
             </section>
 
             <section id="live-sync" class="tab-view">
                 <div class="sync-banner">
-                    <h2 class="title-xl">CLOUD <span class="outline">SYNC</span></h2>
-                    <button id="sync-trigger" class="sync-action-btn">FETCH FROM GOOGLE SHEETS</button>
+                    <h2 class="title-xl">AUTO <span class="outline">SYNC</span></h2>
+                    <button id="sync-trigger" class="sync-action-btn">
+                        <i class="fa-solid fa-rotate"></i> REFRESH_CENTRAL_DB
+                    </button>
                 </div>
-                <div id="sync-notice" class="sync-log">AWAITING CONNECTION...</div>
+                <div id="sync-notice" class="sync-log">AWAITING_COMMAND...</div>
                 <div class="ent-grid" id="auto-sync-grid"></div>
             </section>
 
@@ -57,9 +68,9 @@
                 <div class="contact-blueprint">
                     <div class="blueprint-card">
                         <h3>COORDINATES</h3>
-                        <p>SHOP 5, MINI COMMERCIAL, BAHRIA PHASE 7</p>
-                        <p class="gold">WhatsApp: +92 302 5070541</p>
-                        <a href="https://wa.me/923025070541" class="wa-trigger">INITIATE SECURE CHAT</a>
+                        <p>BAHRIA PHASE 7, MINI COMMERCIAL, SHOP 5</p>
+                        <p class="gold">PK (+92) 302 5070541</p>
+                        <a href="https://wa.me/923025070541" class="wa-trigger">OPEN_SECURE_CHANNEL</a>
                     </div>
                 </div>
             </section>
