@@ -3,143 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassan Electric & Cool Services | Solar & HVAC Engineering</title>
     
-    <title>Hassan Electric & Cool Services | Solar & HVAC Rawalpindi</title>
-    <meta name="title" content="Hassan Electric & Cool Services | Solar & HVAC Rawalpindi">
-    <meta name="description" content="Authorized Industrial Electrical & Solar Provider in Bahria Phase 7, Rawalpindi. Premium LED lighting, Hybrid Solar Systems, and Industrial HVAC services. Check our live inventory and daily rates.">
-    <meta name="keywords" content="Hassan Electric Rawalpindi, Solar Panel Price Pakistan, HVAC services Bahria Phase 7, Industrial Electrician Islamabad, LED Bulb wholesale Rawalpindi, Net Metering Pakistan">
-    <meta name="author" content="Hassan Electric">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Authorized Industrial Solar & HVAC Contractors in Rawalpindi. Engineering excellence in Bahria Phase 7.">
+    <meta property="og:title" content="Hassan Electric & Cool Services">
+    <meta property="og:description" content="Live Inventory & Engineering Services. Rawalpindi's trusted Solar partner.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:url" content="https://hassanelectric.live">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hassanelectric.com/">
-    <meta property="og:title" content="Hassan Electric | Industrial Inventory & Solar Portal">
-    <meta property="og:description" content="Live inventory sync for electrical components and solar hardware. Engineering excellence in Rawalpindi.">
-    <meta property="og:image" content="https://hassanelectric.com/assets/logo.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Electrician",
+      "name": "Hassan Electric",
+      "address": {"@type": "PostalAddress", "addressLocality": "Rawalpindi", "addressRegion": "PK"},
+      "telephone": "+923025070541"
+    }
+    </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&family=Noto+Nastaliq+Urdu&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-page">
 
-    <div id="cursor-dot"></div>
-    <div id="cursor-outline"></div>
-
-    <div id="boot-screen" class="boot-wrapper">
-        <div class="boot-content">
-            <h1 class="urdu-greeting">اَلسَّلَامُ عَلَيْكُمْ</h1>
-            <div class="loader-container"><div id="loader-bar" class="loader-progress"></div></div>
-            <p class="status-logs">> BISMILLAH_INIT... SYSTEM_READY</p>
+    <div id="loader-overlay">
+        <div class="loader-content">
+            <h1 class="urdu-text">اَلسَّلَامُ عَلَيْكُمْ</h1>
+            <p class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+            <div class="progress-container"><div id="progress-bar"></div></div>
+            <p class="status">ESTABLISHING SECURE_CONNECTION...</p>
         </div>
     </div>
 
-    <header class="top-bar">
-        <div class="logo-container">
-            <svg class="hassan-logo" viewBox="0 0 100 100" width="50" height="50">
-                <path d="M20,50 L50,10 L80,50 L50,90 Z" fill="none" stroke="#fcc419" stroke-width="3"/>
-                <path d="M50,25 L50,75 M35,50 L65,50" stroke="#fcc419" stroke-width="2"/>
-                <circle cx="50" cy="50" r="5" fill="#fcc419">
-                    <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
-                </circle>
-            </svg>
-            <div class="logo-text">
-                <span class="brand">HASSAN<span class="gold">ELECTRIC</span></span>
-                <span class="sub">ENGINEERING & RENEWABLES</span>
+    <header class="main-header">
+        <div class="container nav-flex">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo">
+                <div class="logo-text">
+                    <span class="brand">HASSAN <span class="gold">ELECTRIC</span></span>
+                    <span class="tag">ENGINEERING & COOL SERVICES</span>
+                </div>
             </div>
-        </div>
-        
-        <div class="header-tools">
-            <div id="clock" class="hide-mobile">00:00:00</div>
-            <button id="mobile-toggle" class="mobile-toggle"><i class="fa-solid fa-bars-staggered"></i></button>
+            <nav class="nav-menu">
+                <a href="index.html" class="active">HOME</a>
+                <a href="data/services.html">SERVICES</a>
+                <a href="data/inventory.html">INVENTORY</a>
+            </nav>
         </div>
     </header>
 
-    <div class="app-shell">
-        <aside class="sidebar" id="sidebar">
-            <nav>
-                <button class="nav-btn active" data-tab="inventory-section">
-                    <i class="fa-solid fa-microchip"></i> 01_INVENTORY
-                </button>
-                <button class="nav-btn" data-tab="services-section">
-                    <i class="fa-solid fa-screwdriver-wrench"></i> 02_SERVICES
-                </button>
-                <button class="nav-btn" data-tab="contact-section">
-                    <i class="fa-solid fa-satellite-dish"></i> 03_TERMINAL
-                </button>
-            </nav>
-            <div class="sidebar-status">
-                <span class="pulse"></span> DB_CONNECTED
+    <section class="hero-attraction">
+        <div class="glow-sphere"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="reveal">NEXT-GEN <br><span class="outline">SOLAR</span> ENERGY</h1>
+                <p class="reveal delay-1">Premium Industrial Solutions for Rawalpindi. We don't just wire; we engineer.</p>
+                <div class="cta-group reveal delay-2">
+                    <a href="data/inventory.html" class="btn-primary">EXPLORE VAULT</a>
+                    <a href="https://wa.me/923025070541" class="btn-outline">CONTACT CHANNEL</a>
+                </div>
             </div>
-        </aside>
-
-        <main class="viewport">
-            <section id="inventory-section" class="tab-view active">
-                <div class="industrial-header">
-                    <div class="title-block">
-                        <h2 class="title-main">HARDWARE <span class="outline">VAULT</span></h2>
-                        <p class="dim">AUTOMATED CLOUD SYNC ACTIVE</p>
-                    </div>
-                    <div class="search-wrap">
-                        <input type="text" id="search-bar" placeholder="SEARCH CATALOG...">
-                        <button id="sync-trigger" class="btn-sync">REFRESH_DATA</button>
-                    </div>
-                </div>
-
-                <div id="sync-notice" class="sync-banner">AWAITING CONNECTION...</div>
-
-                <div class="table-frame">
-                    <table class="industrial-table">
-                        <thead>
-                            <tr>
-                                <th>DESCRIPTION</th>
-                                <th>CATEGORY</th>
-                                <th>LIST_PRICE</th>
-                                <th>DISCOUNT</th>
-                                <th>NET_PRICE</th>
-                                <th>ACTION</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inventory-body">
-                            </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section id="services-section" class="tab-view">
-                <h2 class="title-main">CORE <span class="outline">OPERATIONS</span></h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fa-solid fa-solar-panel"></i>
-                        <h3>SOLAR DESIGN</h3>
-                        <p>End-to-end solar infrastructure, mounting, and commissioning.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fa-solid fa-snowflake"></i>
-                        <h3>HVAC SYSTEMS</h3>
-                        <p>Industrial VRF installation and climate control maintenance.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact-section" class="tab-view">
-                <div class="contact-terminal">
-                    <div class="terminal-box">
-                        <h3>TERMINAL_COORDINATES</h3>
-                        <p>SHOP 5, MINI COMMERCIAL, BAHRIA PHASE 7, RAWALPINDI</p>
-                        <p class="gold">CONTACT: +92 302 5070541</p>
-                        <a href="https://wa.me/923025070541" class="btn-wa">OPEN_SECURE_CHANNEL</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <footer class="footer-ticker">
-        <div class="ticker-content">
-            INDUSTRIAL SOLAR • VRF SYSTEMS • SMART DISTRIBUTION • NET METERING • 24/7 SUPPORT • 
         </div>
-    </footer>
+        <div class="stats-ribbon">
+            <div class="stat-item"><span>500+</span> PROJECTS</div>
+            <div class="stat-item"><span>20MW+</span> SOLAR</div>
+            <div class="stat-item"><span>24/7</span> SUPPORT</div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
