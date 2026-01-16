@@ -3,100 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HASSAN ELECTRIC | INDUSTRIAL PORTAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Space+Grotesk:wght@300;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <title>HASSAN ELECTRIC | ENTERPRISE PORTAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
     <div id="boot-screen" class="boot-wrapper">
         <div class="boot-content">
-            <h1 class="urdu-greeting">Assalam-o-Alaikum</h1>
-            <p class="urdu-text">اَلسَّلَامُ عَلَيْكُمْ</p>
-            <div class="loader-container">
-                <div id="loader-bar" class="loader-progress"></div>
-            </div>
-            <div class="status-logs" id="status-logs">
-                > INITIALIZING BI-MILLAH...<br>
-                > SYNCING CALIBRATION...
-            </div>
+            <h1 class="urdu-greeting">اَلسَّلَامُ عَلَيْكُمْ</h1>
+            <div class="loader-container"><div id="loader-bar" class="loader-progress"></div></div>
+            <div id="status-logs" class="status-logs">> BISMILLAH_INIT...</div>
         </div>
     </div>
 
-    <header class="top-bar">
-        <div class="logo-section">
-            <i class="fa-solid fa-bolt-lightning neon-flicker"></i>
-            <span class="brand-name">HASSAN<span class="gold">.ENG</span></span>
-        </div>
-        <div class="header-right">
-            <span class="location-tag">RAWALPINDI // 33.6844° N</span>
-            <div class="clock" id="clock">00:00:00</div>
+    <header class="main-header">
+        <div class="logo">HASSAN<span class="gold">.ENG</span></div>
+        <div class="sys-info">
+            <div class="status-item"><span class="pulse"></span> LIVE_SYNC_READY</div>
+            <div id="clock">00:00:00</div>
         </div>
     </header>
 
-    <div class="app-container">
+    <div class="app-shell">
         <aside class="sidebar">
             <nav>
-                <button class="nav-btn active" data-tab="services">01_SERVICES</button>
-                <button class="nav-btn" data-tab="catalog">02_CATALOG</button>
-                <button class="nav-btn" data-tab="projects">03_PROJECTS</button>
-                <button class="nav-btn" data-tab="contact">04_SUPPORT</button>
+                <button class="nav-link active" data-tab="services">01_SERVICES</button>
+                <button class="nav-link" data-tab="live-sync">02_LIVE_INVENTORY</button>
+                <button class="nav-link" data-tab="contact">03_TERMINAL</button>
             </nav>
         </aside>
 
-        <main class="content-area">
+        <main class="viewport">
             <section id="services" class="tab-view active">
-                <div class="hero-header">
-                    <h2>POWERING <span class="outline">INFRASTRUCTURE</span></h2>
-                </div>
-                <div class="industrial-grid" id="service-injection"></div>
+                <h2 class="title-xl">CORE <span class="outline">SYSTEMS</span></h2>
+                <div class="ent-grid" id="service-grid"></div>
             </section>
 
-            <section id="catalog" class="tab-view">
-                <div class="hero-header">
-                    <h2>HARDWARE <span class="outline">INVENTORY</span></h2>
+            <section id="live-sync" class="tab-view">
+                <div class="sync-banner">
+                    <h2 class="title-xl">CLOUD <span class="outline">SYNC</span></h2>
+                    <button id="sync-trigger" class="sync-action-btn">FETCH FROM GOOGLE SHEETS</button>
                 </div>
-                <div class="filter-strip">
-                    <button class="f-pill active" onclick="filterData('All')">ALL.UNITS</button>
-                    <button class="f-pill" onclick="filterData('Solar')">SOLAR.UNIT</button>
-                    <button class="f-pill" onclick="filterData('HVAC')">HVAC.UNIT</button>
-                </div>
-                <div class="industrial-grid" id="product-injection"></div>
-            </section>
-
-            <section id="projects" class="tab-view">
-                <div class="hero-header">
-                    <h2>OPERATIONAL <span class="outline">LOGS</span></h2>
-                </div>
-                <div class="log-list" id="log-injection"></div>
+                <div id="sync-notice" class="sync-log">AWAITING CONNECTION...</div>
+                <div class="ent-grid" id="auto-sync-grid"></div>
             </section>
 
             <section id="contact" class="tab-view">
                 <div class="contact-blueprint">
-                    <div class="blueprint-info">
-                        <h3>HQ COORDINATES</h3>
-                        <p>BAHRIA PHASE 7, SHOP 5</p>
-                        <p>COMMERCIAL ZONE</p>
-                        <div class="wa-box">
-                            <a href="https://wa.me/923025070541" class="wa-btn">ESTABLISH CONNECTION</a>
-                        </div>
-                    </div>
-                    <div class="blueprint-map">
-                        <iframe src="http://googleusercontent.com/maps.google.com/5" loading="lazy"></iframe>
+                    <div class="blueprint-card">
+                        <h3>COORDINATES</h3>
+                        <p>SHOP 5, MINI COMMERCIAL, BAHRIA PHASE 7</p>
+                        <p class="gold">WhatsApp: +92 302 5070541</p>
+                        <a href="https://wa.me/923025070541" class="wa-trigger">INITIATE SECURE CHAT</a>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <footer class="system-footer">
-        <div class="scrolling-text">
-            SOLAR SOLUTIONS • INDUSTRIAL HVAC • SMART WIRING • PANEL DESIGN • NET METERING • 
-        </div>
-    </footer>
-
-    <script src="inventory.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
