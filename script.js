@@ -5,13 +5,37 @@ const INVENTORY_CSV =
 const SERVICES_CSV =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCUWZzKZ-eBa22g0r3VYgfzli_ljjmg54VhPA0VidARKBY22K_WNz9wZ9160nQk9utuXnRjXP_igp0/pub?gid=1319615574&single=true&output=csv";
 
-/* SIMPLE LOADER */
-window.onload = () => {
+/* SMOOTH INTRO LOADER (FIXED FOR YOUR MARKUP) */
+document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
-  if (loader) {
-    setTimeout(() => loader.remove(), 1200);
-  }
-};
+  const bar = document.querySelector(".progress-bar span");
+
+  if (!loader || !bar) return;
+
+  let progress = 0;
+
+  // Fake loading for perception
+  const fakeLoad = setInterval(() => {
+    if (progress < 90) {
+      progress += 3;
+      bar.style.width = progress + "%";
+    }
+  }, 80);
+
+  // Finish when everything is loaded
+  window.addEventListener("load", () => {
+    clearInterval(fakeLoad);
+    bar.style.width = "100%";
+
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
+
+      setTimeout(() => loader.remove(), 400);
+    }, 300);
+  });
+});
+
 
 /* CSV PARSER */
 function parseCSV(text) {
